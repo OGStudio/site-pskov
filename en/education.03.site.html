@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <style>
+            #header
+            {
+                background: #856d51;
+                padding: 0.7em;
+                text-align: left;
+            }
+            
+            #header a
+            {
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+            #title
+            {
+                color: #433729;
+            }
+            iframe
+            {
+                width: 720px;
+                height: 720px;
+            }
+            html
+            {
+                font-family: sans-serif;
+            }
+            body
+            {
+                line-height: 1.5em;
+            }
+            body
+            {
+                background: #FAFAFA;
+            }
+            table
+            {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table, th, td
+            {
+                border: 1px solid #aaa;
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            code, pre
+            {
+                font-family: monospace, serif;
+                font-size: 1em;
+                color: #7f0a0c;
+                background: #f5f5f5;
+                white-space: pre-wrap;
+            }
+            .contents
+            {
+                background: #FFFFFF;
+                width: 720px;
+                padding: 1em;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                border: 1px solid #E0E0E0;
+                text-align: left;
+                color: #444;
+            }
+        </style>
+        <title>
+            PSKOV - Opensource Game Studio static site generator
+        </title>
+    </head>
+    <body>
+        <div id="header">
+            <strong id="title">PSKOV</strong>
+            <a href="index.html">Tool</a>
+            <a href="education.html">Education</a>
+        </div>
+        <center><h1>
+Education: 03. Site
+        </h1></center>
+        <center><div class="contents">
+<table>
+<thead>
+<tr>
+<th>&lt; Back</th>
+<th>Index</th>
+<th>Next &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.02.deps.html">02. Dependencies</a></td>
+<td><a href="education.html">Education</a></td>
+<td><a href="education.04.lang.html">04. Language</a></td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<p>In this document we create a simple static web site with two pages.</p>
+<p>Estimated completion time: ? minutes.</p>
+<p><strong>Table of contents</strong></p>
+<ul>
+<li><a href="#inspiration">01. Inspiration</a></li>
+<li><a href="#cfg">02. Investigate <code>cfg</code> file</a></li>
+<li><a href="#item">03. Investigate <code>item.template</code> file</a></li>
+<li><a href="#md">04. Investigate <code>index.md</code> and <code>cv.md</code> files</a></li>
+<li><a href="#lfsa">05. Launch LFSA</a></li>
+<li><a href="#gen">06. Generate the site</a></li>
+</ul>
+<p><a name="inspiration"/></p>
+<h2 id="01inspiration">01. Inspiration</h2>
+<p>Suppose you are a great Russian painter named Valentin Serov. Everytime anyone wants to know about you they refer to <a href="https://en.wikipedia.org/wiki/Valentin_Serov">Wikipedia</a>. You wake up earlier today with a distinct desire to have your very own personal web site.</p>
+<p>You set on to create the following pages:</p>
+<ul>
+<li>About me</li>
+<li>Curriculum vitae (CV)</li>
+</ul>
+<p>Some time later you have the following files in your <a href="https://github.com/OGStudio/site-pskov-sample/tree/master/01.Pages">site directory</a>:</p>
+<ul>
+<li>cfg</li>
+<li>item.template</li>
+<li>index.md</li>
+<li>cv.md</li>
+</ul>
+<p>Let's look at their contents closer.</p>
+<p><a name="cfg"/></p>
+<h2 id="02investigatecfgfile">02. Investigate <code>cfg</code> file</h2>
+<p><code>cfg</code> file has the following contents:</p>
+<pre><code>input = .
+item = item.template
+</code></pre>
+<p><code>cfg</code> is an <a href="https://en.wikipedia.org/wiki/INI_file">INI file</a> with the following keys specified:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td>Points to a directory where <code>item</code>'s file is located</td>
+</tr>
+<tr>
+<td><code>item</code></td>
+<td>Points to an HTML template file that will be used to generate HTML files out of Markdown ones</td>
+</tr>
+</tbody>
+</table>
+<p>In our case, <code>item.template</code> file is located alongside <code>cfg</code>, so we use <code>.</code> to denote current directory.</p>
+<p><a name="item"/></p>
+<h2 id="03investigateitemtemplatefile">03. Investigate <code>item.template</code> file</h2>
+<p><code>item.template</code> file has the following contents:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;head&gt;
+        &lt;style&gt;
+            - - - - Style was collapsed for brevity - - - -
+        &lt;/style&gt;
+        &lt;title&gt;Serov&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="header"&gt;
+            &lt;strong&gt;Serov&lt;/strong&gt;
+            &lt;a href="index.html"&gt;About me&lt;/a&gt;
+            &lt;a href="cv.html"&gt;CV&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;center&gt;
+            &lt;h1&gt;PSKOV_ITEM_TITLE&lt;/h1&gt;
+            &lt;div class="contents"&gt;
+PSKOV_ITEM_CONTENTS
+            &lt;/div&gt;
+        &lt;/center&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Note</strong>: style was collapsed for brevity.</p>
+<p>As you can see, <code>item.template</code> is an average HTML file with two constants specified:</p>
+<table>
+<thead>
+<tr>
+<th>PSKOV constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_TITLE</code></td>
+<td>Provides title from <code>Title:</code> part of page's header section</td>
+</tr>
+<tr>
+<td><code>PSKOV_ITEM_CONTENTS</code></td>
+<td>Provides HTML contents generated out of Markdown contents</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li>other <strong>PSKOV</strong> constants are described later</li>
+<li>page's header section is described below</li>
+</ul>
+<p><a name="md"/></p>
+<h2 id="04investigateindexmdandcvmdfiles">04. Investigate <code>index.md</code> and <code>cv.md</code> files</h2>
+<p><code>index.md</code> file has the following contents:</p>
+<pre><code> Title: About me
+ Date: 2019-05-16 00:00
+ Slug: index
+
+ Hi, my name is Valentin Serov. Here's my self-portrait:
+
+ ![Valentin Serov self-portrait][serov-portrait]
+
+ - - - - Contents were collapsed for brevity - - - -
+
+ Have a look at my [CV][cv] now.
+
+ [serov]: https://en.wikipedia.org/wiki/Valentin_Serov
+ [revolution]: https://en.wikipedia.org/wiki/Russian_Revolution
+ [serov-portrait]: myself.jpg
+ [serov-work]: mywork.jpg
+ [girl-with-peaches]: https://en.wikipedia.org/wiki/Girl_with_Peaches
+ [pskov]: http://opengamestudio.org/pskov
+ [cv]: cv.html
+</code></pre>
+<p><code>index.md</code> starts with a so-called header section:</p>
+<table>
+<thead>
+<tr>
+<th>Header constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Title:</code></td>
+<td>Provides value for <code>PSKOV_ITEM_TITLE</code> constant when generating HTML out of Markdown</td>
+</tr>
+<tr>
+<td><code>Date:</code></td>
+<td>Provides value for <code>PSKOV_ITEM_DATE</code> constant when generating HTML out of Markdown</td>
+</tr>
+<tr>
+<td><code>Slug:</code></td>
+<td>Tells <strong>PSKOV</strong> that this particular Markdown file should be saved under <code>&lt;slug&gt;.html</code> filename</td>
+</tr>
+</tbody>
+</table>
+<p>The rest of <code>index.md</code> contents is what any Markdown file looks like.</p>
+<p><strong>Note</strong>: make sure other pages are referenced with <code>html</code> extension, not <code>md</code> one: have a look at <code>[cv]</code> link above.</p>
+<p><code>cv.md</code> file has the following contents:</p>
+<pre><code> Title: Curriculum vitae
+ Date: 2019-05-16 00:00
+ Slug: cv
+
+ Here's my CV in case my paintings still interest you. I took a bit of a modern IT approach to structure my CV as key-value pairs of a dictionary (map), enjoy!
+
+ | Key | Value |
+ |---|---|
+ | Name | Valentin Serov |
+ | Age | 46 |
+ | Marital status | Married |
+ | Country | Russian Empire |
+ | Alma mater | Imperial Academy of Arts |
+ | Education | * Member Academy of Arts (1898) &lt;br&gt; * Full Member Academy of Arts (1903) |
+</code></pre>
+<p>As you can see, there's nothing new in <code>cv.md</code> except for a Markdown table.</p>
+<p><a name="lfsa"/></p>
+<h2 id="05launchlfsa">05. Launch LFSA</h2>
+<p>Launch LFSA so that it points to directory with the files we just observed:</p>
+<pre><code>$ /path/to/local-file-system-access /path/to/dir/01.Pages
+</code></pre>
+<p>You should see output similar to this:</p>
+<pre><code>DIR: '/Users/kornerr/p/site-pskov-sample/01.Pages'
+PORT: '8000'
+</code></pre>
+<p><a name="gen"/></p>
+<h2 id="06generatethesite">06. Generate the site</h2>
+<p>Now it's finally time to generate your personal web site:</p>
+<ul>
+<li>Go to <a href="http://opengamestudio.org/pskov">Tool</a> page</li>
+<li>Make sure<ul>
+<li><code>Path:</code> points to the same directory you specified before</li>
+<li><code>Input directory:</code> and <code>Item template:</code> have values from <code>cfg</code></li></ul></li>
+<li>Press <code>Generate</code> button</li>
+<li>Open generated <code>index.html</code> from the site's directory locally</li>
+<li>You should see your web site running locally</li>
+</ul>
+<p>Take time to observe your new shiny personal web site consisting of two pages.</p>
+<p></div><div class="contents"></p>
+<table>
+<thead>
+<tr>
+<th>&lt; Back</th>
+<th>Index</th>
+<th>Next &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.02.deps.html">02. Dependencies</a></td>
+<td><a href="education.html">Education</a></td>
+<td><a href="education.04.lang.html">04. Language</a></td>
+</tr>
+</tbody>
+</table>
+        </div></center>
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
+
