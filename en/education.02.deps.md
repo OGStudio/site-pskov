@@ -10,41 +10,44 @@ Lang: en
 
 </div><div class="contents">
 
-In this document we teach how to install **PSKOV** dependencies.
+In this document we describe **PSKOV** dependencies and how to get them.
 
-Estimated completion time: ?? minutes.
+Estimated completion time: 5 minutes.
 
 **Table of contents**
 
 * [01. Dependencies](#deps)
-* [02. Install LFSA](#lfsa)
-* [03. Showdown](#showdown)
+* [02. Details](#details)
 
 <a name="deps"/>
 
 ## 01. Dependencies
 
-We designed **PSKOV** to run inside web browsers. Hence, here is a list of **PSKOV dependencies**:
+We designed **PSKOV** to run inside web browsers. Here is what you need to run **PSKOV**:
 
-| № | Dependency | Note |
+| № | PSKOV dependency | Notes |
 |---|---|---|
 | 1 | Web browser of 2010 or newer | **PSKOV** needs ECMAScript 5 (2009), any modern web browser should work |
-| 2 | Local file system access (LFSA) | [LFSA][lfsa] gives **PSKOV** access to your local file system |
+| 2 | Local file system access | [LFSA][lfsa] gives **PSKOV** access to your local file system. Install LFSA to be able to use **PSKOV**. |
 
-Since **PSKOV** is a client side JavaScript application, it has no direct access to your local file system to generate files. That's why we have also created [LFSA][lfsa], a tiny Python server to provide read/write access to your local file system at 8000 port. LFSA is under 200 lines of code, feel free to [inspect it][lfsa-src] to make sure we don't steal your data.
+**Note**: [install LFSA][lfsa] to be able to use **PSKOV**.
 
-<a name="lfsa"/>
+<a name="details"/>
 
-## 02. Install LFSA
+## 02. Details
 
-TODO 
+**PSKOV**:
 
-<a name="showdown"/>
+* is a client side JavaScript application
+* has no direct access to local file system
+* uses [LFSA][lfsa] to access local file system
+* uses [Showdown][showdown] to convert Markdown to HTML
 
-## 03. Showdown
+**LFSA**:
 
-Tell Showdown.JS is used to convert Markdown to HTML, so users should refer to Showdown.JS for rules.
-
+* is a tiny Python server to provide read/write access to local file system
+* runs at 8000 port
+* is under 200 lines of code, feel free to [inspect it][lfsa-src]
 
 </div><div class="contents">
 
@@ -57,4 +60,5 @@ Tell Showdown.JS is used to convert Markdown to HTML, so users should refer to S
 [next]: education.03.site.html
 
 [lfsa]: http://opengamestudio.org/lfsa
-[lfsa-src]: TODO-LFSA-SRC
+[lfsa-src]: https://bitbucket.org/ogstudio/local-file-system-access/src/default/local-file-system-access.py
+[showdown]: https://github.com/showdownjs/showdown

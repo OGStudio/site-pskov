@@ -6111,7 +6111,7 @@
                     self.LOG("Saved news items");
                 });
                 this.savedItems.subscribe(function(){
-                    self.generatePreviews();
+                    self.generatePreviewsIfTemplatesExist();
                 });
                 this.previewsChanged.subscribe(function(){
                     self.LOG("Generated '" + self.previews.length + "' previews");
@@ -6310,7 +6310,7 @@
                     }
                     else
                     {
-                        this.LOG("ERROR `" + fileName + "` template file is missing");
+                        this.LOG("WARNING `" + name + "` template is missing");
                     }
                 }
             
@@ -6420,6 +6420,11 @@
                 this.previewsChanged.report();
             }
             
+            News.prototype.lineIsLink = function(ln)
+            {
+                return ln.search(/^\[.+\]:.+/) != -1;
+            }
+            
             News.prototype.newsItemPreview = function(newsItem)
             {
                 // 1. Get news item content lines that have approximately `previewSize` characters.
@@ -6434,10 +6439,13 @@
                 for (var id in lines)
                 {
                     var ln = lines[id];
-                    contents += "\n" + ln;
-                    if (contents.length >= limit)
+                    if (!this.lineIsLink(ln))
                     {
-                        break;
+                        contents += "\n" + ln;
+                        if (contents.length >= limit)
+                        {
+                            break;
+                        }
                     }
                 }
             
@@ -6449,7 +6457,7 @@
                 for (var id in lines)
                 {
                     var ln = lines[id];
-                    if (ln.search(/^\[.+\]:.+/) != -1)
+                    if (this.lineIsLink(ln))
                     {
                         links += ln + "\n";
                     }
@@ -6462,6 +6470,30 @@
                 var html = converter.makeHtml(preview);
             
                 return html;
+            }
+            News.prototype.generatePreviewsIfTemplatesExist = function()
+            {
+                // Find out if any of the templates does not exist.
+                var ok = true;
+                for (var id in this.templatesToLocate)
+                {
+                    var name = this.templatesToLocate[id];
+                    if (!(name in this.templates))
+                    {
+                        ok = false;
+                        break;
+                    }
+                }
+                // Generate previews if all templates exist.
+                if (ok)
+                {
+                    this.generatePreviews();
+                }
+                // Report finish otherwise.
+                else
+                {
+                    this.finished.report();
+                }
             }
             News.prototype.previewPageName = function(id)
             {

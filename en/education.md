@@ -4,17 +4,65 @@ Category: Page
 Slug: education
 Lang: en
 
-Here you can find a set of documents to make you proficient in generating static sites with **PSKOV**. You are encouraged to read the documents in order.
+Here is a set of documents to make you proficient in generating static sites with **PSKOV**. We encourage you to read the documents in order.
 
-| № | Document | Details | Estimated completion time |
-|---|---|---|---|
-| 1 | [Why][why] | Learn why **PSKOV** was created | 5 minutes |
-| 2 | [Dependencies][deps] | Learn what you need to install before you can use **PSKOV** | ?? minutes |
-| 3 | [Site][site] | Learn how to create a simple static web site with two pages | ?? minutes |
-| 4 | Language | ? | ? |
-| 5 | Blog | ? | ? |
+## [01. Why][why]
+
+| Item | Details |
+|---|---|
+| Description | Find out why **PSKOV** was created |
+| Estimated completion time | 5 minutes |
+
+## [02. Dependencies][deps]
+
+| Item | Details |
+|---|---|
+| Description | Install dependencies to start using **PSKOV** |
+| Estimated completion time | 5 minutes |
+
+## [03. Site][site]
+
+| Item | Details |
+|---|---|
+| Description | Learn how to create a simple static web site with two pages |
+| Estimated completion time | 10 minutes |
+| Demonstration | [TwoPages][01-sample] |
+| Introduced PSKOV constants | <ol> <li>`PSKOV_ITEM_TITLE`</li> <li>`PSKOV_ITEM_CONTENTS`</li> </ol> |
+| Introduced configuration keys | <ol> <li>`input`</li> <li>`item`</li> </ol> |
+| Introduced header constants | <ol> <li>`Title:`</li> <li>`Slug:`</li> </ol> |
+
+## [04. Language][lang]
+
+| Item | Details |
+|---|---|
+| Description | Learn how to add language selection |
+| Estimated completion time | 10 minutes |
+| Demonstration | [Language][02-sample] |
+| Introduced PSKOV constants | <ol> <li>`PSKOV_ITEM_URL`</li> </ol> |
+
+## [05. Blog][blog]
+
+| Item | Details |
+|---|---|
+| Description | Learn how to create "dynamic" pages like blog posts |
+| Estimated completion time | 20 minutes |
+| Demonstration | [Blog][03-sample] |
+| Introduced PSKOV constants | <ol> <li>`PSKOV_ITEM_DATE`</li> <li>`PSKOV_PREVIEW`</li> <li>`PSKOV_INDEX_URL`</li> <li>`PSKOV_PREVIEWS`</li> <li>`PSKOV_PAGINATION`</li> <li>`PSKOV_PAGE_ID`</li> <li>`PSKOV_PAGES_COUNT`</li> <li>`PSKOV_PREV_PAGE_URL`</li> <li>`PSKOV_NEXT_PAGE_URL`</li> </ol> |
+| Introduced configuration keys | <ol> <li>`preview`</li> <li>`index`</li> <li>`paginationPrev`</li> <li>`paginationNext`</li> <li>`paginationPrevNext`</li> <li>`previewSize`</li> <li>`previewEnding`</li> <li>`previewsPerPage`</li> <li>`previewsPageBaseName`</li> </ol> |
+| Introduced header constants | <ol> <li>`Date:`</li> </ol> |
+
+If you like what we do, support us by joining our group at [Twitter][tw], [Facebook][fb], or [VK][vk].
 
 [why]: education.01.why.html
 [deps]: education.02.deps.html
 [site]: education.03.site.html
-[item]: https://github.com/OGStudio/site-pskov-sample/blob/master/01.Serov/item.template
+[lang]: education.04.lang.html
+[blog]: education.05.blog.html
+
+[01-sample]: http://opengamestudio.org/pskov/sample/01.TwoPages/about.html
+[02-sample]: http://opengamestudio.org/pskov/sample/02.Language/en/about.html
+[03-sample]: http://opengamestudio.org/pskov/sample/03.Blog/en/blog/index.html
+
+[tw]: https://twitter.com/OpenGameStudio
+[fb]: https://www.facebook.com/groups/162611230470183
+[vk]: https://vk.com/opengamestudo

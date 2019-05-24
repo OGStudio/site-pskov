@@ -101,23 +101,22 @@ Education: 02. Dependencies
 </tbody>
 </table>
 <p></div><div class="contents"></p>
-<p>In this document we teach how to install <strong>PSKOV</strong> dependencies.</p>
-<p>Estimated completion time: ?? minutes.</p>
+<p>In this document we describe <strong>PSKOV</strong> dependencies and how to get them.</p>
+<p>Estimated completion time: 5 minutes.</p>
 <p><strong>Table of contents</strong></p>
 <ul>
 <li><a href="#deps">01. Dependencies</a></li>
-<li><a href="#lfsa">02. Install LFSA</a></li>
-<li><a href="#showdown">03. Showdown</a></li>
+<li><a href="#details">02. Details</a></li>
 </ul>
 <p><a name="deps"/></p>
 <h2 id="01dependencies">01. Dependencies</h2>
-<p>We designed <strong>PSKOV</strong> to run inside web browsers. Hence, here is a list of <strong>PSKOV dependencies</strong>:</p>
+<p>We designed <strong>PSKOV</strong> to run inside web browsers. Here is what you need to run <strong>PSKOV</strong>:</p>
 <table>
 <thead>
 <tr>
 <th>№</th>
-<th>Dependency</th>
-<th>Note</th>
+<th>PSKOV dependency</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -128,18 +127,27 @@ Education: 02. Dependencies
 </tr>
 <tr>
 <td>2</td>
-<td>Local file system access (LFSA)</td>
-<td><a href="http://opengamestudio.org/lfsa">LFSA</a> gives <strong>PSKOV</strong> access to your local file system</td>
+<td>Local file system access</td>
+<td><a href="http://opengamestudio.org/lfsa">LFSA</a> gives <strong>PSKOV</strong> access to your local file system. Install LFSA to be able to use <strong>PSKOV</strong>.</td>
 </tr>
 </tbody>
 </table>
-<p>Since <strong>PSKOV</strong> is a client side JavaScript application, it has no direct access to your local file system to generate files. That's why we have also created <a href="http://opengamestudio.org/lfsa">LFSA</a>, a tiny Python server to provide read/write access to your local file system at 8000 port. LFSA is under 200 lines of code, feel free to <a href="TODO-LFSA-SRC">inspect it</a> to make sure we don't steal your data.</p>
-<p><a name="lfsa"/></p>
-<h2 id="02installlfsa">02. Install LFSA</h2>
-<p>TODO </p>
-<p><a name="showdown"/></p>
-<h2 id="03showdown">03. Showdown</h2>
-<p>Tell Showdown.JS is used to convert Markdown to HTML, so users should refer to Showdown.JS for rules.</p>
+<p><strong>Note</strong>: <a href="http://opengamestudio.org/lfsa">install LFSA</a> to be able to use <strong>PSKOV</strong>.</p>
+<p><a name="details"/></p>
+<h2 id="02details">02. Details</h2>
+<p><strong>PSKOV</strong>:</p>
+<ul>
+<li>is a client side JavaScript application</li>
+<li>has no direct access to local file system</li>
+<li>uses <a href="http://opengamestudio.org/lfsa">LFSA</a> to access local file system</li>
+<li>uses <a href="https://github.com/showdownjs/showdown">Showdown</a> to convert Markdown to HTML</li>
+</ul>
+<p><strong>LFSA</strong>:</p>
+<ul>
+<li>is a tiny Python server to provide read/write access to local file system</li>
+<li>runs at 8000 port</li>
+<li>is under 200 lines of code, feel free to <a href="https://bitbucket.org/ogstudio/local-file-system-access/src/default/local-file-system-access.py">inspect it</a></li>
+</ul>
 <p></div><div class="contents"></p>
 <table>
 <thead>
