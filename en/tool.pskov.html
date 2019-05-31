@@ -3,6 +3,67 @@
     <meta charset="utf-8">
     <head>
         <style>
+            #header
+            {
+                background: #856d51;
+                padding: 0.7em;
+                text-align: left;
+            }
+            
+            #header a
+            {
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+            #title
+            {
+                color: #433729;
+            }
+            html
+            {
+                font-family: sans-serif;
+            }
+            body
+            {
+                line-height: 1.5em;
+            }
+            body
+            {
+                background: #FAFAFA;
+            }
+            table
+            {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table, th, td
+            {
+                border: 1px solid #aaa;
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            code, pre
+            {
+                font-family: monospace, serif;
+                font-size: 1em;
+                color: #7f0a0c;
+                background: #f5f5f5;
+                white-space: pre-wrap;
+            }
+            .contents
+            {
+                background: #FFFFFF;
+                width: 720px;
+                padding: 1em;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                border: 1px solid #E0E0E0;
+                text-align: left;
+                color: #444;
+            }
             table
             {
                 border-collapse: collapse;
@@ -28,81 +89,99 @@
                 font-weight: bold;
             }
         </style>
+        <title>
+            PSKOV-201905
+        </title>
     </head>
     <body>
-        <table>
-            <tr>
-                <td colspan="2" class="section">
-                    <a href="http://opengamestudio.org/lfsa">Local file system access</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Path:</td>
-                <td id="lfsaPath">Updating...</td>
-            </tr>
-            <tr>
-                <td colspan="2" class="section">
-                    Configuration
-                    <button type="button" onclick="window.pskovTool.saveCfg()">Save</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Input directory:</td>
-                <td><input id="input"></input></td>
-            </tr>
-            <tr>
-                <td>Item template:</td>
-                <td><input id="item"></input></td>
-            </tr>
-            <tr>
-                <td>Preview template:</td>
-                <td><input id="preview"></input></td>
-            </tr>
-            <tr>
-                <td>Index template:</td>
-                <td><input id="index"></input></td>
-            </tr>
-            <tr>
-                <td>Pagination 'Previous' template:</td>
-                <td><input id="paginationPrev"></input></td>
-            </tr>
-            <tr>
-                <td>Pagination 'Next' template:</td>
-                <td><input id="paginationNext"></input></td>
-            </tr>
-            <tr>
-                <td>Pagination 'Previous/Next' template:</td>
-                <td><input id="paginationPrevNext"></input></td>
-            </tr>
-            <tr>
-                <td>Preview characters limit:</td>
-                <td><input id="previewSize"></input></td>
-            </tr>
-            <tr>
-                <td>Preview ending string:</td>
-                <td><input id="previewEnding"></input></td>
-            </tr>
-            <tr>
-                <td>Previews per page:</td>
-                <td><input id="previewsPerPage"></input></td>
-            </tr>
-            <tr>
-                <td>Preview page base name:</td>
-                <td><input id="previewPageBaseName"></input></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="section">
-                    News
-                    <button type="button" onclick="window.pskovTool.generateNews()">Generate</button>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" class="section">Log</td>
-            </tr>
-            <tr>
-                <td id="log" colspan="2"></td>
-            </tr>
-        </table>
+        <div id="header">
+            <strong id="title">PSKOV</strong>
+            <a href="tool.pskov.html">Tool</a>
+            <a href="education.html">Education</a>
+        </div>
+        <center><h1>
+            PSKOV-201905
+        </h1></center>
+        <center><div class="contents">
+            <p>
+            <strong>PSKOV</strong> is a static site generator that runs in your web browser.
+            What you see now has also been generated with <strong>PSKOV</strong>.
+            If you're new to <strong>PSKOV</strong>, visit <a href="education.html">education page</a>.
+            </p>
+            <table>
+                <tr>
+                    <td colspan="2" class="section">
+                        <a href="http://opengamestudio.org/lfsa">Local file system access</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Path:</td>
+                    <td id="lfsaPath">Updating...</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="section">
+                        Configuration
+                        <button type="button" onclick="window.pskovTool.saveCfg()">Save</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Input directory:</td>
+                    <td><input id="input"></input></td>
+                </tr>
+                <tr>
+                    <td>Item template:</td>
+                    <td><input id="item"></input></td>
+                </tr>
+                <tr>
+                    <td>Preview template:</td>
+                    <td><input id="preview"></input></td>
+                </tr>
+                <tr>
+                    <td>Index template:</td>
+                    <td><input id="index"></input></td>
+                </tr>
+                <tr>
+                    <td>Pagination 'Previous' template:</td>
+                    <td><input id="paginationPrev"></input></td>
+                </tr>
+                <tr>
+                    <td>Pagination 'Next' template:</td>
+                    <td><input id="paginationNext"></input></td>
+                </tr>
+                <tr>
+                    <td>Pagination 'Previous/Next' template:</td>
+                    <td><input id="paginationPrevNext"></input></td>
+                </tr>
+                <tr>
+                    <td>Preview characters limit:</td>
+                    <td><input id="previewSize"></input></td>
+                </tr>
+                <tr>
+                    <td>Preview ending string:</td>
+                    <td><input id="previewEnding"></input></td>
+                </tr>
+                <tr>
+                    <td>Previews per page:</td>
+                    <td><input id="previewsPerPage"></input></td>
+                </tr>
+                <tr>
+                    <td>Preview page base name:</td>
+                    <td><input id="previewPageBaseName"></input></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="section">
+                        News
+                        <button type="button" onclick="window.pskovTool.generateNews()">Generate</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="section">Log</td>
+                </tr>
+                <tr>
+                    <td id="log" colspan="2"></td>
+                </tr>
+            </table>
+        </div></center>
         <script type="text/javascript">
             <!-- showdown.js -->
             ;/*! showdown v 2.0.0-alpha1 - 24-10-2018 */
@@ -5576,7 +5655,7 @@
             String.prototype.startsWith = String.prototype.startsWith || function(prefix) {
                 return this.indexOf(prefix) === 0;
             };
-
+            
             function fileExists(fileName, fileList)
             {
                 for (var id in fileList)
@@ -5662,7 +5741,7 @@
                 this.subscriptions.push(subscription);
                 return subscription;
             }
-
+            
             <!-- LFSA -->
             // LFSA class to communicate with local-file-system-access instance.
             function LFSA()
@@ -5673,28 +5752,21 @@
             LFSA.prototype.get = function(url, successCallback, failureCallback)
             {
                 var req = new XMLHttpRequest();
-                req.addEventListener(
-                    "load",
-                    function()
+                req.onreadystatechange = function()
+                {
+                    if (this.readyState == 4)
                     {
-                        //console.log("get.successCallback.responseText: '" + this.responseText + "'");
-                        successCallback(this.responseText);
+                        if (this.status == 200)
+                        {
+                            //console.log("get.successCallback.responseText: '" + this.responseText + "'");
+                            successCallback(this.responseText);
+                        }
+                        else
+                        {
+                            failureCallback();
+                        }
                     }
-                );
-                req.addEventListener(
-                    "error",
-                    function()
-                    {
-                        failureCallback();
-                    }
-                );
-                req.addEventListener(
-                    "abort",
-                    function()
-                    {
-                        failureCallback();
-                    }
-                );
+                }
             
                 const prefix = this.host + ":" + this.port;
                 const addr = prefix + url;
@@ -5709,28 +5781,21 @@
             LFSA.prototype.post = function(url, data, successCallback, failureCallback)
             {
                 var req = new XMLHttpRequest();
-                req.addEventListener(
-                    "load",
-                    function()
+                req.onreadystatechange = function()
+                {
+                    if (this.readyState == 4)
                     {
-                        //console.log("POST.successCallback.responseText: '" + this.responseText + "'");
-                        successCallback(this.responseText);
+                        if (this.status == 200)
+                        {
+                            //console.log("POST.successCallback.responseText: '" + this.responseText + "'");
+                            successCallback(this.responseText);
+                        }
+                        else
+                        {
+                            failureCallback();
+                        }
                     }
-                );
-                req.addEventListener(
-                    "error",
-                    function()
-                    {
-                        failureCallback();
-                    }
-                );
-                req.addEventListener(
-                    "abort",
-                    function()
-                    {
-                        failureCallback();
-                    }
-                );
+                }
             
                 const prefix = this.host + ":" + this.port;
                 const addr = prefix + url;
@@ -5890,7 +5955,7 @@
                 // Start processing.
                 process();
             }
-
+            
             <!-- Common -->
             // NewsItem class.
             function NewsItem()
@@ -5908,7 +5973,7 @@
                 this.items = [];
                 this.previews = [];
             }
-
+            
             <!-- Cfg -->
             // Cfg class.
             function Cfg()
@@ -6051,7 +6116,7 @@
                 }
                 this.lfsa.saveFile("cfg", cfgFile, success, failure);
             }
-
+            
             <!-- News -->
             // News class.
             function News()
@@ -6091,7 +6156,7 @@
                 this.paginatedPreviewPagesChanged = new Reporter();
                 this.savedPreviewPages = new Reporter();
                 this.finished = new Reporter();
-
+            
                 this.inputFilesChanged.subscribe(function(){
                     self.locateMarkdownFiles();
                 });
@@ -6671,7 +6736,7 @@
                     }
                 );
             }
-
+            
             <!-- Tool -->
             // Tool class.
             function Tool()
@@ -6681,7 +6746,7 @@
                 this.cfg = new Cfg();
                 this.cfg.lfsa = this.lfsa;
                 this.news = new News();
-
+            
                 this.news.finished.subscribe(function(){
                     // Continue processing.
                     self.processNewsGeneration();
@@ -6749,10 +6814,11 @@
                     delete this.cfg.cfg["output"];
                 }
             }
-
+            
             <!-- Startup -->
             window.pskovTool = new Tool();
             window.pskovTool.run()
         </script>
     </body>
 </html>
+

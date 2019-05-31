@@ -60,5 +60,5 @@ We designed **PSKOV** to run inside web browsers. Here is what you need to run *
 [next]: education.03.site.html
 
 [lfsa]: http://opengamestudio.org/lfsa
-[lfsa-src]: https://bitbucket.org/ogstudio/local-file-system-access/src/default/local-file-system-access.py
+[lfsa-src]: https://bitbucket.org/ogstudio/lfsa/src/default/lfsa-201905.py
 [showdown]: https://github.com/showdownjs/showdown

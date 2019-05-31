@@ -1,11 +1,11 @@
 #!/bin/bash
-# This script generates source code for each stage (aka version)
-# using AMLEO: http://opengamestudio.org/amleo
+# This script generates PSKOV site using AMLEO: http://opengamestudio.org/amleo
 
 DIR=`dirname $0`
+PSKOV=../../pskov
 GEN=amleo.py
 
 # 01.Tool.
-$GEN $DIR/01*/{cfg,t,v}
+$GEN $DIR/01*/{cfg,t,v} $PSKOV
 # 02.?.
 #$GEN $DIR/02*/{cfg,t} $DIR/0{1,2}*/v

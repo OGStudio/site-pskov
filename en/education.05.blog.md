@@ -409,7 +409,7 @@ Date is used to sort blog posts by date in ascending order:
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
 ```
-$ /path/to/local-file-system-access.py /path/to/dir/03.Blog
+$ /path/to/lfsa-201905.py /path/to/dir/03.Blog
 ```
 
 Generate the site:

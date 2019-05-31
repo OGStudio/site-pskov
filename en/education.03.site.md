@@ -178,7 +178,7 @@ As you can see, there's nothing new in `cv.md` except for a Markdown table.
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
 ```
-$ /path/to/local-file-system-access.py /path/to/dir/01.TwoPages
+$ /path/to/lfsa-201905.py /path/to/dir/01.TwoPages
 ```
 
 You should see output similar to this:
