@@ -6,4 +6,8 @@ site-pskov.UI.Tool
 site-pskov.UI.Education
 site-pskov.UI.Contents
 site-pskov.UI.ContentsTitle
-pskov.pskov-201905
+pskov.pskov_1.0.0.Style
+pskov.pskov_1.0.0.UI
+pskov.pskov_1.0.0.Script
+pskov.pskov_1.0.0.UI-ru
+pskov.pskov_1.0.0.Script-ru

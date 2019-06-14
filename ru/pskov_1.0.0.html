@@ -90,17 +90,17 @@
             }
         </style>
         <title>
-            PSKOV-201905
+            pskov_1.0.0
         </title>
     </head>
     <body>
         <div id="header">
             <strong id="title">PSKOV</strong>
-            <a href="tool.pskov.html">Tool</a>
+            <a href="pskov_1.0.0.html">Tool</a>
             <a href="education.html">Education</a>
         </div>
         <center><h1>
-            PSKOV-201905
+            PSKOV 1.0.0 (2019-06)
         </h1></center>
         <center><div class="contents">
             <p>
@@ -5655,6 +5655,20 @@
             String.prototype.startsWith = String.prototype.startsWith || function(prefix) {
                 return this.indexOf(prefix) === 0;
             };
+            // Topic: JavaScript equivalent to printf/String.Format
+            // Source: https://stackoverflow.com/a/4673436
+            function formatString() {
+                // Topic: How to shift “arguments”?
+                // Source: https://stackoverflow.com/questions/4775895/how-to-shift-arguments
+                var args = Array.prototype.slice.call(arguments);
+                var str = args.shift();
+                return str.replace(/{(\d+)}/g, function(match, number) { 
+                          return typeof args[number] != 'undefined'
+                            ? args[number]
+                            : match
+                          ;
+                        });
+            };
             
             function fileExists(fileName, fileList)
             {
@@ -5978,12 +5992,25 @@
             // Cfg class.
             function Cfg()
             {
+                var self = this;
                 this.lfsa = null;
             
                 this.cfg = {};
                 this.cfgChanged = new Reporter();
+                this.fileName = "pskov.cfg";
+                this.logTranslations = {};
+                this.logTranslations["FILE_EXISTS"] = "'{0}' file exists: '{1}'";
+                this.logTranslations["FILE_DOES_NOT_EXIST"] = "ERROR '{0}' file does not exist";
+                this.logTranslations["FILE_CHECK_FAILED"] = "ERROR Could not check if '{0}' file exists because LFSA request failed";
+                this.logTranslations["COULD_NOT_READ"] = "ERROR Could not read '{0}' file";
+                this.logTranslations["SAVED"] = "Saved configuration";
+                this.logTranslations["SAVING"] = "Saving configuration into '{0}' file...";
+                this.logTranslations["COULD_NOT_SAVE"] = "ERROR Could not save '{0}' file";
                 this.exists = false;
                 this.existsChanged = new Reporter();
+                this.existsChanged.subscribe(function(){
+                    self.LOG("FILE_EXISTS", self.fileName, self.exists)
+                });
                 this.saved = new Reporter();
             }
             // Cfg's startup sequence.
@@ -5991,9 +6018,6 @@
             {
                 var self = this;
                 this.checkExistence();
-                this.existsChanged.subscribe(function(){
-                    self.LOG("`cfg` file exists: '" + self.exists + "'");
-                });
                 this.existsChanged.subscribe(function(){
                     self.load();
                 });
@@ -6004,15 +6028,29 @@
                     self.load();
                 });
                 this.saved.subscribe(function(){
-                    self.LOG("Saved configuration");
+                    self.LOG("SAVED");
                 });
                 this.cfgChanged.subscribe(function(){
                     self.cfg["output"] = self.cfg["input"];
                 });
             }
-            Cfg.prototype.LOG = function(message)
+            Cfg.prototype.LOG = function()
             {
-                LOG("Cfg " + message);
+                var args = Array.prototype.slice.call(arguments);
+                var translationKey = args.shift();
+                var message = "Cfg ";
+                if (translationKey in this.logTranslations)
+                {
+                    args.unshift(this.logTranslations[translationKey]);
+                    // Topic: Converting an array to a function arguments list
+                    // Source: https://stackoverflow.com/a/1316389
+                    message += formatString.apply(null, args);
+                }
+                else
+                {
+                    message += translationKey + " " + args.join(" ");
+                }
+                LOG(message);
             }
             Cfg.prototype.checkExistence = function()
             {
@@ -6020,10 +6058,10 @@
             
                 var success = function(fileList)
                 {
-                    var exists = fileExists("cfg", fileList);
+                    var exists = fileExists(self.fileName, fileList);
                     if (!exists)
                     {
-                        self.LOG("ERROR `cfg` file does not exist");
+                        self.LOG("FILE_DOES_NOT_EXIST", self.fileName)
                         return;
                     }
             
@@ -6033,7 +6071,7 @@
                 }
                 var failure = function()
                 {
-                    self.LOG("ERROR Could not check if `cfg` file exists because LFSA request failed");
+                    self.LOG("FILE_CHECK_FAILED", self.fileName)
                 }
             
                 this.lfsa.requestFileList("", success, failure);
@@ -6049,10 +6087,10 @@
                 }
                 var failure = function()
                 {
-                    self.LOG("ERROR Could not read `cfg` file");
+                    self.LOG("COULD_NOT_READ", self.fileName);
                 }
             
-                this.lfsa.requestFile("cfg", success, failure);
+                this.lfsa.requestFile(this.fileName, success, failure);
             }
             Cfg.prototype.display = function()
             {
@@ -6082,7 +6120,7 @@
             Cfg.prototype.save = function()
             {
                 var cfgFile = "";
-                this.LOG("Saving configuration into `cfg` file...");
+                this.LOG("SAVING", this.fileName);
                 var input = document.getElementById("input");
                 cfgFile += "input = " + input.value + "\n";
                 var item = document.getElementById("item");
@@ -6112,9 +6150,9 @@
                 }
                 var failure = function()
                 {
-                    self.LOG("ERROR Could not save `cfg` file");
+                    self.LOG("COULD_NOT_SAVE", self.fileName);
                 }
-                this.lfsa.saveFile("cfg", cfgFile, success, failure);
+                this.lfsa.saveFile(this.fileName, cfgFile, success, failure);
             }
             
             <!-- News -->
@@ -6124,14 +6162,38 @@
                 var self = this;
                 this.cfg = null;
                 this.lfsa = null;
+                this.logTranslations = {};
+                this.logTranslations["TEMPLATE_IS_MISSING"] = "WARNING '{0}' template is missing";
+                this.logTranslations["READ_TEMPLATES"] = "Read '{0}' templates";
+                this.logTranslations["NO_MARKDOWNS"] = "ERROR No markdown files were found";
+                this.logTranslations["READ_MARKDOWNS"] = "Read '{0}' markdown files";
+                this.logTranslations["PARSED_MARKDOWNS"] = "Parsed '{0}' markdown files";
+                this.logTranslations["SAVED_NEWS_ITEMS"] = "Saved news items";
+                this.logTranslations["GENERATED_PREVIEWS"] = "Generated '{0}' previews";
+                this.logTranslations["GENERATED_PREVIEW_PAGES"] = "Generated '{0}' preview pages";
+                this.logTranslations["PAGINATED_PREVIEW_PAGES"] = "Preview pages have been linked";
+                this.logTranslations["SAVED_PREVIEW_PAGES"] = "Saved preview pages";
+                this.logTranslations["COULD_NOT_LOCATE_INPUT_FILES"] = "ERROR Could not locate input files because LFSA request failed";
                 this.inputFiles = [];
                 this.inputFilesChanged = new Reporter();
                 this.markdownFiles = [];
                 this.markdownFilesChanged = new Reporter();
+                this.markdownFilesChanged.subscribe(function(){
+                    if (self.markdownFiles.length == 0)
+                    {
+                        self.LOG("NO_MARKDOWNS");
+                    }
+                });
                 this.markdownFileContents = [];
                 this.markdownFileContentsChanged = new Reporter();
+                this.markdownFileContentsChanged.subscribe(function(){
+                    self.LOG("READ_MARKDOWNS", self.markdownFileContents.length);
+                });
                 this.newsItems = [];
                 this.newsItemsChanged = new Reporter();
+                this.newsItemsChanged.subscribe(function(){
+                    self.LOG("PARSED_MARKDOWNS", self.newsItems.length);
+                });
                 this.templatesToLocate = [
                     "item",
                     "preview",
@@ -6147,6 +6209,9 @@
                 this.templatesChanged = new Reporter();
                 this.templateContents = {};
                 this.templateContentsChanged = new Reporter();
+                this.templateContentsChanged.subscribe(function(){
+                    self.LOG("READ_TEMPLATES", Object.keys(self.templateContents).length);
+                });
                 this.savedItems = new Reporter();
                 this.previews = [];
                 this.previewsChanged = new Reporter();
@@ -6173,31 +6238,31 @@
                     self.saveItems();
                 });
                 this.savedItems.subscribe(function(){
-                    self.LOG("Saved news items");
+                    self.LOG("SAVED_NEWS_ITEMS");
                 });
                 this.savedItems.subscribe(function(){
                     self.generatePreviewsIfTemplatesExist();
                 });
                 this.previewsChanged.subscribe(function(){
-                    self.LOG("Generated '" + self.previews.length + "' previews");
+                    self.LOG("GENERATED_PREVIEWS", self.previews.length);
                 });
                 this.previewsChanged.subscribe(function(){
                     self.generatePreviewPages();
                 });
                 this.previewPagesChanged.subscribe(function(){
-                    self.LOG("Generated '" + self.previewPages.length + "' preview pages");
+                    self.LOG("GENERATED_PREVIEW_PAGES", self.previewPages.length);
                 });
                 this.previewPagesChanged.subscribe(function(){
                     self.paginatePreviewPages();
                 });
                 this.paginatedPreviewPagesChanged.subscribe(function(){
-                    self.LOG("Paginated preview pages");
+                    self.LOG("PAGINATED_PREVIEW_PAGES");
                 });
                 this.paginatedPreviewPagesChanged.subscribe(function(){
                     self.savePreviewPages();
                 });
                 this.savedPreviewPages.subscribe(function(){
-                    self.LOG("Saved preview pages");
+                    self.LOG("SAVED_PREVIEW_PAGES");
                 });
                 this.templatesChanged.subscribe(function(){
                     self.generateUponCounter(2);
@@ -6226,9 +6291,23 @@
                     this.readTemplates();
                 }
             }
-            News.prototype.LOG = function(message)
+            News.prototype.LOG = function()
             {
-                LOG("News " + message);
+                var args = Array.prototype.slice.call(arguments);
+                var translationKey = args.shift();
+                var message = "News ";
+                if (translationKey in this.logTranslations)
+                {
+                    args.unshift(this.logTranslations[translationKey]);
+                    // Topic: Converting an array to a function arguments list
+                    // Source: https://stackoverflow.com/a/1316389
+                    message += formatString.apply(null, args);
+                }
+                else
+                {
+                    message += translationKey + " " + args.join(" ");
+                }
+                LOG(message);
             }
             News.prototype.locateInputFiles = function()
             {
@@ -6241,7 +6320,7 @@
                 }
                 var failure = function()
                 {
-                    self.LOG("ERROR Could not locate input files because LFSA request failed");
+                    self.LOG("COULD_NOT_LOCATE_INPUT_FILES");
                 }
             
                 var path = this.cfg["input"];
@@ -6257,11 +6336,6 @@
                     {
                         files.push(file.path);
                     }
-                }
-            
-                if (files.length == 0)
-                {
-                    this.LOG("ERROR No markdown files were found");
                 }
             
                 // Sort by name descending, effectively making latest news the first ones.
@@ -6296,7 +6370,6 @@
                         var operation = operations[id];
                         fileContents.push(operation.contents);
                     }
-                    self.LOG("Read '" + operations.length + "' markdown files");
                     self.markdownFileContents = fileContents;
                     self.markdownFileContentsChanged.report();
                 }
@@ -6314,13 +6387,10 @@
                     var item = this.parseNewsItem(contents, fileName);
                     items.push(item);
                 }
-                this.LOG("Parsed '" + items.length + "' markdown files");
-            
                 // Report.
                 this.newsItems = items;
                 this.newsItemsChanged.report();
             }
-            
             News.prototype.parseNewsItem = function(contents, fileName)
             {
                 var newsItem = new NewsItem();
@@ -6375,7 +6445,7 @@
                     }
                     else
                     {
-                        this.LOG("WARNING `" + name + "` template is missing");
+                        self.LOG("TEMPLATE_IS_MISSING", name);
                     }
                 }
             
@@ -6417,7 +6487,6 @@
                         var name = self.templateNames[fileName];
                         templateContents[name] = operation.contents;
                     }
-                    self.LOG("Read '" + operations.length + "' templates");
                     self.templateContents = templateContents;
                     self.templateContentsChanged.report();
                 }
@@ -6742,6 +6811,10 @@
             function Tool()
             {
                 var self = this;
+                this.logTranslations = {};
+                this.logTranslations["GEN_NEWS"] = "Generating news for directory '{0}'";
+                this.logTranslations["FINISH_GEN_NEWS"] = "Finished generating news for all directories";
+                this.errorMessage = "<span class='error'>Error</span>";
                 this.lfsa = new LFSA();
                 this.cfg = new Cfg();
                 this.cfg.lfsa = this.lfsa;
@@ -6765,8 +6838,28 @@
                     self.news.run();
                 });
             }
+            Tool.prototype.LOG = function()
+            {
+                var args = Array.prototype.slice.call(arguments);
+                var translationKey = args.shift();
+                var message = "Tool ";
+                if (translationKey in this.logTranslations)
+                {
+                    args.unshift(this.logTranslations[translationKey]);
+                    // Topic: Converting an array to a function arguments list
+                    // Source: https://stackoverflow.com/a/1316389
+                    message += formatString.apply(null, args);
+                }
+                else
+                {
+                    message += translationKey + " " + args.join(" ");
+                }
+                LOG(message);
+            }
             Tool.prototype.refreshLFSAPath = function()
             {
+                var self = this;
+            
                 var lfsaPath = document.getElementById("lfsaPath");
             
                 var success = function(response)
@@ -6775,7 +6868,7 @@
                 }
                 var failure = function()
                 {
-                    lfsaPath.innerHTML = "<span class='error'>Error</span>";
+                    lfsaPath.innerHTML = self.errorMessage;
                 }
             
                 this.lfsa.requestPath(success, failure);
@@ -6794,20 +6887,19 @@
                 // Start processing.
                 this.processNewsGeneration();
             }
-            
             Tool.prototype.processNewsGeneration = function()
             {
                 if (this.newsDirs.length > 0)
                 {
                     var dir = this.newsDirs.shift();
-                    LOG("Generating news for directory '" + dir + "'");
+                    this.LOG("GEN_NEWS", dir);
                     this.cfg.cfg["input"] = dir;
                     this.cfg.cfg["output"] = this.cfg.cfg["input"];
                     this.news.generate();
                 }
                 else
                 {
-                    LOG("Finished generating news for all directories");
+                    this.LOG("FINISH_GEN_NEWS");
                     // Restore original 'input'.
                     this.cfg.cfg["input"] = this.originalInput;
                     // Delete temorary 'output'.
@@ -6821,4 +6913,3 @@
         </script>
     </body>
 </html>
-
