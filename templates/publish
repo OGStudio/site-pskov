@@ -10,8 +10,8 @@ fi
 
 DIR=`dirname $0`
 
-cp $DIR/$STAGE/*.html ../$DIR/en/
-cp $DIR/$STAGE/*.template ../$DIR/en/
+cp $DIR/$STAGE/pskov_1.0.0.html ../$DIR/en/
+cp $DIR/$STAGE/en.item.template ../$DIR/en/item.template
 
-cp $DIR/$STAGE/*.html ../$DIR/ru/
-cp $DIR/$STAGE/*.template ../$DIR/ru/
+cp $DIR/$STAGE/pskov_1.0.0+ru.html ../$DIR/ru/
+cp $DIR/$STAGE/ru.item.template ../$DIR/ru/item.template

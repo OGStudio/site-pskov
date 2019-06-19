@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <style>
+            #header
+            {
+                background: #856d51;
+                padding: 0.7em;
+                text-align: left;
+            }
+            
+            #header a
+            {
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+            #title
+            {
+                color: #433729;
+            }
+            html
+            {
+                font-family: sans-serif;
+            }
+            body
+            {
+                line-height: 1.5em;
+            }
+            body
+            {
+                background: #FAFAFA;
+            }
+            table
+            {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table, th, td
+            {
+                border: 1px solid #aaa;
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            code, pre
+            {
+                font-family: monospace, serif;
+                font-size: 1em;
+                color: #7f0a0c;
+                background: #f5f5f5;
+                white-space: pre-wrap;
+            }
+            .contents
+            {
+                background: #FFFFFF;
+                width: 720px;
+                padding: 1em;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                border: 1px solid #E0E0E0;
+                text-align: left;
+                color: #444;
+            }
+            #footer
+            {
+                text-align: center;
+            }
+            #lang
+            {
+                float: right;
+            }
+        </style>
+        <title>
+            PSKOV
+        </title>
+    </head>
+    <body>
+        <div id="header">
+            <strong id="title">ПСКОВ</strong>
+            <a href="pskov_1.0.0+ru.html">Инструмент</a>
+            <a href="education.html">Обучение</a>
+            <div id="lang">
+                <a href="../en/education.04.lang.html">EN</a>
+                <a href="../ru/education.04.lang.html">RU</a>
+            </div>
+        </div>
+        <center><h1>
+Обучение: 04. Язык
+        </h1></center>
+        <center><div class="contents">
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.03.site.html">03. Сайт</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td><a href="education.05.blog.html">05. Блог</a></td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<p>В этом документе мы добавим выбор языка.</p>
+<p>Ожидаемое время завершения: 10 минут.</p>
+<p><strong>Содержание</strong></p>
+<ul>
+<li><a href="#localization">01. Локализация</a></li>
+<li><a href="#cfg">02. Изучите файл <code>pskov.cfg</code></a></li>
+<li><a href="#item">03. Изучите файлы шаблонов</a></li>
+<li><a href="#md">04. Изучите файлы Markdown</a></li>
+<li><a href="#gen">05. Запустите ЛФСД и сгенерируйте сайт</a></li>
+<li><a href="#summary">06. Итог</a></li>
+</ul>
+<p><a name="localization"/></p>
+<h2 id="01">01. Локализация</h2>
+<p>Теперь, когда у вас есть собственный веб-сайт на английском, вы задумываетесь о русской версии, ведь вы же всё-таки русский!</p>
+<p>Вы создаёте директорию со <a href="https://github.com/OGStudio/site-pskov-sample/tree/master/02.Language">следующей структурой файлов</a>:</p>
+<ul>
+<li><code>pskov.cfg</code></li>
+<li><code>en/item.template</code></li>
+<li><code>en/about.md</code></li>
+<li><code>en/cv.md</code></li>
+<li><code>ru/item.template</code></li>
+<li><code>ru/about.md</code></li>
+<li><code>ru/cv.md</code></li>
+</ul>
+<p>Давайте взглянем на содержимое этих файлов.</p>
+<p><a name="cfg"/></p>
+<h2 id="02pskovcfg">02. Изучите файл <code>pskov.cfg</code></h2>
+<p>Файл <code>pskov.cfg</code> содержит следующее:</p>
+<pre><code>input = en;ru
+item = item.template
+</code></pre>
+<p>Как видите, <code>input</code> может принимать несколько директорий, разделённых символом <code>;</code>. <strong>ПСКОВ</strong> обработает каждую указанную директорию так же, как и ранее.</p>
+<p>В нашем случае каждая из директорий - <code>en/</code> и <code>ru/</code> - содержит собственный шаблон <code>item.template</code>.</p>
+<p><a name="item"/></p>
+<h2 id="03">03. Изучите файлы шаблонов</h2>
+<ul>
+<li><p>Содержимое <code>en/item.template</code>:</p>
+<pre><code>- - - - Схлопнуто для краткости - - - -
+        &lt;title&gt;Serov&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="header"&gt;
+            &lt;strong&gt;Serov&lt;/strong&gt;
+            &lt;a href="about.html"&gt;About me&lt;/a&gt;
+            &lt;a href="cv.html"&gt;CV&lt;/a&gt;
+            &lt;div id="lang"&gt;
+                &lt;a href="../en/PSKOV_ITEM_URL"&gt;EN&lt;/a&gt;
+                &lt;a href="../ru/PSKOV_ITEM_URL"&gt;RU&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;center&gt;
+- - - - Схлопнуто для краткости - - - -
+</code></pre></li>
+<li><p>Содержимое <code>ru/item.template</code>:</p>
+<pre><code>- - - - Схлопнуто для краткости - - - -
+        &lt;title&gt;Серов&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="header"&gt;
+            &lt;strong&gt;Серов&lt;/strong&gt;
+            &lt;a href="about.html"&gt;Обо мне&lt;/a&gt;
+            &lt;a href="cv.html"&gt;Резюме&lt;/a&gt;
+            &lt;div id="lang"&gt;
+                &lt;a href="../en/PSKOV_ITEM_URL"&gt;EN&lt;/a&gt;
+                &lt;a href="../ru/PSKOV_ITEM_URL"&gt;RU&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;center&gt;
+- - - - Схлопнуто для краткости - - - -
+</code></pre></li>
+</ul>
+<p><strong>Внимание</strong>: начало и конец схлопнуты для краткости.</p>
+<p>Как видите, <code>en/item.template</code> и <code>ru/item.template</code> очень похожи на <a href="education.03.site.html">виденный ранее</a> <code>item.template</code>.</p>
+<p>Изменения следующие:</p>
+<ul>
+<li>использование секции <code>&lt;div id="lang"&gt;...&lt;/div&gt;</code> для отображения выбора языка</li>
+<li>локализация заголовков на Английском и Русском языках</li>
+</ul>
+<p>Выбор языка использует следующую новую константу <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_URL</code></td>
+<td>Предоставляет имя файла генерируемой страницы</td>
+</tr>
+</tbody>
+</table>
+<p>Использование <code>PSKOV_ITEM_URL</code> даёт вам поддержку стольких языков, сколько пожелаете.</p>
+<p><a name="md"/></p>
+<h2 id="04markdown">04. Изучите файлы Markdown</h2>
+<p>Файлы <code>en/about.md</code> и <code>en/cv.md</code> выглядят почти идентично <a href="education.03.site.html">виденным ранее</a>. <code>ru/about.md</code> и <code>ru/cv.md</code> представляют собой русские версии соответствующих английских страниц.</p>
+<p>Например, <code>ru/cv.md</code> содержит:</p>
+<pre><code> Title: Резюме
+ Slug: cv
+
+ Здесь вы можете увидеть моё резюме в том случае, если мои произведения всё ещё вас интересуют. Я использовал современный подход ИТ для структурирования своего резюме в виде пар ключ-значение словаря (карты). Наслаждайтесь!
+
+ | Ключ | Значение |
+ |---|---|
+ | Имя | Валентин Серов |
+ | Возраст | 46 |
+ | Семейное положение | Женат |
+ | Страна | Российская Империя |
+ | Учёба | Императорская Академия художеств |
+ | Звания | * академик ИАХ (1898) &lt;br&gt; * действительный член ИАХ (1903) |
+</code></pre>
+<p><strong>Внимание</strong>: русская страница использует точно такое же значение <code>Slug</code>, как и английская страница.</p>
+<p><a name="gen"/></p>
+<h2 id="05">05. Запустите ЛФСД и сгенерируйте сайт</h2>
+<p>Запустите <a href="http://opengamestudio.org/lfsa/ru">ЛФСД</a> с указанием директории, содержащей только что рассмотренные файлы:</p>
+<pre><code>$ /путь/до/lfsa_1.0.0.py /путь/до/директории/02.Language
+</code></pre>
+<p>Сгенерируйте сайт:</p>
+<ul>
+<li>Перейдите на страницу <a href="http://opengamestudio.org/pskov/ru/pskov_1.0.0+ru.html">Инструмент</a></li>
+<li>Нажмите кнопку <code>Генерировать</code></li>
+<li>Откройте сгенерированный файл <code>en/about.html</code> или <code>ru/about.html</code> из директории сайта</li>
+<li>Переключите язык, чтобы убедиться в корректной работе</li>
+</ul>
+<p><a name="summary"/></p>
+<h2 id="06">06. Итог</h2>
+<p>Вы успешно добавили выбор языка. <a href="http://opengamestudio.org/pskov/sample/02.Language/ru/about.html">Проверьте результат</a>.</p>
+<p>Представлены константы <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_URL</code></td>
+<td>Предоставляет имя файла генерируемой страницы</td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.03.site.html">03. Сайт</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td><a href="education.05.blog.html">05. Блог</a></td>
+</tr>
+</tbody>
+</table>
+        </div></center>
+        <div id="footer">
+            Сайт сгенерирован <a href="http://opengamestudio.org/pskov">ПСКОВОМ</a>
+            из <a href="http://github.com/ogstudio/site-pskov">этого исходного кода</a>.
+            Сайт расположен на <a href="https://pages.github.com">GitHub Pages</a>.
+        </div>
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
+

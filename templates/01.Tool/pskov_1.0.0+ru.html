@@ -98,96 +98,95 @@
             }
         </style>
         <title>
-            pskov_1.0.0
+            pskov_1.0.0+ru
         </title>
     </head>
     <body>
         <div id="header">
-            <strong id="title">PSKOV</strong>
-            <a href="pskov_1.0.0.html">Tool</a>
-            <a href="education.html">Education</a>
+            <strong id="title">ПСКОВ</strong>
+            <a href="pskov_1.0.0+ru.html">Инструмент</a>
+            <a href="education.html">Обучение</a>
             <div id="lang">
                 <a href="../en/pskov_1.0.0.html">EN</a>
                 <a href="../ru/pskov_1.0.0+ru.html">RU</a>
             </div>
         </div>
         <center><h1>
-            PSKOV 1.0.0 (2019-06)
+            ПСКОВ 1.0.0 (2019-06)
         </h1></center>
         <center><div class="contents">
             <p>
-            <strong>PSKOV</strong> is a static site generator that runs in your web browser.
-            What you see now has also been generated with <strong>PSKOV</strong>.
-            If you're new to <strong>PSKOV</strong>, visit <a href="education.html">education page</a>.
+            <strong>ПСКОВ</strong> является генератором статических сайтов, работающим прямо в веб-браузере.
+            Этот сайт тоже сгенерирован <strong>ПСКОВОМ</strong>. Познакомьтесь с ним на <a href="education.html">странице обучения</a>.
             </p>
             <table>
                 <tr>
                     <td colspan="2" class="section">
-                        <a href="http://opengamestudio.org/lfsa">Local file system access</a>
+                        <a href="http://opengamestudio.org/lfsa">К Локальной Файловой Системе Доступ</a>
                     </td>
                 </tr>
                 <tr>
-                    <td>Path:</td>
-                    <td id="lfsaPath">Updating...</td>
+                    <td>Путь:</td>
+                    <td id="lfsaPath">Обновление...</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="section">
-                        Configuration
-                        <button type="button" onclick="window.pskovTool.saveCfg()">Save</button>
+                        Настройки
+                        <button type="button" onclick="window.pskovTool.saveCfg()">Сохранить</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Input directory:</td>
+                    <td>Входящая директория:</td>
                     <td><input id="input"></input></td>
                 </tr>
                 <tr>
-                    <td>Item template:</td>
+                    <td>Шаблон элемента ('item'):</td>
                     <td><input id="item"></input></td>
                 </tr>
                 <tr>
-                    <td>Preview template:</td>
+                    <td>Шаблон предпросмотра ('preview'):</td>
                     <td><input id="preview"></input></td>
                 </tr>
                 <tr>
-                    <td>Index template:</td>
+                    <td>Шаблон страницы с предпросмотрами ('index'):</td>
                     <td><input id="index"></input></td>
                 </tr>
                 <tr>
-                    <td>Pagination 'Previous' template:</td>
+                    <td>Постраничный шаблон 'Предыдущий' ('paginationPrev'):</td>
                     <td><input id="paginationPrev"></input></td>
                 </tr>
                 <tr>
-                    <td>Pagination 'Next' template:</td>
+                    <td>Постраничный шаблон 'Следующий' ('paginationNext'):</td>
                     <td><input id="paginationNext"></input></td>
                 </tr>
                 <tr>
-                    <td>Pagination 'Previous/Next' template:</td>
+                    <td>Постраничный шаблон 'Предыдущий/Следующий' ('paginationPrevNext'):</td>
                     <td><input id="paginationPrevNext"></input></td>
                 </tr>
                 <tr>
-                    <td>Preview characters limit:</td>
+                    <td>Количество символов в предпросмотре:</td>
                     <td><input id="previewSize"></input></td>
                 </tr>
                 <tr>
-                    <td>Preview ending string:</td>
+                    <td>Строка завершения предпросмотра:</td>
                     <td><input id="previewEnding"></input></td>
                 </tr>
                 <tr>
-                    <td>Previews per page:</td>
+                    <td>Предпросмотров на странице:</td>
                     <td><input id="previewsPerPage"></input></td>
                 </tr>
                 <tr>
-                    <td>Preview page base name:</td>
+                    <td>Базовое название страницы с предпросмотрами:</td>
                     <td><input id="previewPageBaseName"></input></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="section">
-                        News
-                        <button type="button" onclick="window.pskovTool.generateNews()">Generate</button>
+                        Новости
+                        <button type="button" onclick="window.pskovTool.generateNews()">Генерировать</button>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="section">Log</td>
+                    <td colspan="2" class="section">Журнал</td>
                 </tr>
                 <tr>
                     <td id="log" colspan="2"></td>
@@ -195,9 +194,9 @@
             </table>
         </div></center>
         <div id="footer">
-            The site has been generated by <a href="http://opengamestudio.org/pskov">PSKOV</a>
-            from <a href="http://github.com/ogstudio/site-pskov">this source code</a>.
-            The site is hosted by <a href="https://pages.github.com">GitHub Pages</a>.
+            Сайт сгенерирован <a href="http://opengamestudio.org/pskov">ПСКОВОМ</a>
+            из <a href="http://github.com/ogstudio/site-pskov">этого исходного кода</a>.
+            Сайт расположен на <a href="https://pages.github.com">GitHub Pages</a>.
         </div>
         <script type="text/javascript">
             <!-- showdown.js -->
@@ -6016,13 +6015,13 @@
                 this.cfgChanged = new Reporter();
                 this.fileName = "pskov.cfg";
                 this.logTranslations = {};
-                this.logTranslations["FILE_EXISTS"] = "'{0}' file exists: '{1}'";
-                this.logTranslations["FILE_DOES_NOT_EXIST"] = "ERROR '{0}' file does not exist";
-                this.logTranslations["FILE_CHECK_FAILED"] = "ERROR Could not check if '{0}' file exists because LFSA request failed";
-                this.logTranslations["COULD_NOT_READ"] = "ERROR Could not read '{0}' file";
-                this.logTranslations["SAVED"] = "Saved configuration";
-                this.logTranslations["SAVING"] = "Saving configuration into '{0}' file...";
-                this.logTranslations["COULD_NOT_SAVE"] = "ERROR Could not save '{0}' file";
+                this.logTranslations["FILE_EXISTS"] = "Файл '{0}' существует: '{1}'";
+                this.logTranslations["FILE_DOES_NOT_EXIST"] = "ОШИБКА Файл '{0}' не существует";
+                this.logTranslations["FILE_CHECK_FAILED"] = "ОШИБКА Не удалось проверить наличие файла '{0}', т.к. запрос к ЛФСД не удался";
+                this.logTranslations["COULD_NOT_READ"] = "ОШИБКА Не удалось прочитать файл '{0}'";
+                this.logTranslations["SAVED"] = "Настройки сохранены";
+                this.logTranslations["SAVING"] = "Сохранение настроек в файл '{0}'...";
+                this.logTranslations["COULD_NOT_SAVE"] = "ОШИБКА Не удалось сохранить файл '{0}'";
                 this.exists = false;
                 this.existsChanged = new Reporter();
                 this.existsChanged.subscribe(function(){
@@ -6180,17 +6179,17 @@
                 this.cfg = null;
                 this.lfsa = null;
                 this.logTranslations = {};
-                this.logTranslations["TEMPLATE_IS_MISSING"] = "WARNING '{0}' template is missing";
-                this.logTranslations["READ_TEMPLATES"] = "Read '{0}' templates";
-                this.logTranslations["NO_MARKDOWNS"] = "ERROR No markdown files were found";
-                this.logTranslations["READ_MARKDOWNS"] = "Read '{0}' markdown files";
-                this.logTranslations["PARSED_MARKDOWNS"] = "Parsed '{0}' markdown files";
-                this.logTranslations["SAVED_NEWS_ITEMS"] = "Saved news items";
-                this.logTranslations["GENERATED_PREVIEWS"] = "Generated '{0}' previews";
-                this.logTranslations["GENERATED_PREVIEW_PAGES"] = "Generated '{0}' preview pages";
-                this.logTranslations["PAGINATED_PREVIEW_PAGES"] = "Preview pages have been linked";
-                this.logTranslations["SAVED_PREVIEW_PAGES"] = "Saved preview pages";
-                this.logTranslations["COULD_NOT_LOCATE_INPUT_FILES"] = "ERROR Could not locate input files because LFSA request failed";
+                this.logTranslations["TEMPLATE_IS_MISSING"] = "ВНИМАНИЕ Шаблон '{0}' отсутствует";
+                this.logTranslations["READ_TEMPLATES"] = "Прочитано шаблонов: '{0}'";
+                this.logTranslations["NO_MARKDOWNS"] = "ОШИБКА Не найдено файлов markdown";
+                this.logTranslations["READ_MARKDOWNS"] = "Прочитано файлов markdown: '{0}'";
+                this.logTranslations["PARSED_MARKDOWNS"] = "Разобрано файлов markdown: '{0}'";
+                this.logTranslations["SAVED_NEWS_ITEMS"] = "Отдельные новости сохранены";
+                this.logTranslations["GENERATED_PREVIEWS"] = "Сгенерировано предпросмотров: '{0}'";
+                this.logTranslations["GENERATED_PREVIEW_PAGES"] = "Сгенерировано страниц с предпросмотрами: '{0}'";
+                this.logTranslations["PAGINATED_PREVIEW_PAGES"] = "Страницы с предпросмотрами связаны";
+                this.logTranslations["SAVED_PREVIEW_PAGES"] = "Страницы с предпросмотрами сохранены";
+                this.logTranslations["COULD_NOT_LOCATE_INPUT_FILES"] = "ОШИБКА Не удалось получить список входящих файлов, т.к. запрос к ЛФСД не удался";
                 this.inputFiles = [];
                 this.inputFilesChanged = new Reporter();
                 this.markdownFiles = [];
@@ -6829,9 +6828,9 @@
             {
                 var self = this;
                 this.logTranslations = {};
-                this.logTranslations["GEN_NEWS"] = "Generating news for directory '{0}'";
-                this.logTranslations["FINISH_GEN_NEWS"] = "Finished generating news for all directories";
-                this.errorMessage = "<span class='error'>Error</span>";
+                this.logTranslations["GEN_NEWS"] = "Генерация новостей для директории '{0}'";
+                this.logTranslations["FINISH_GEN_NEWS"] = "Завершена генерация новостей для всех директорий";
+                this.errorMessage = "<span class='error'>Ошибка</span>";
                 this.lfsa = new LFSA();
                 this.cfg = new Cfg();
                 this.cfg.lfsa = this.lfsa;

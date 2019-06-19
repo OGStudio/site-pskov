@@ -10,17 +10,17 @@ Lang: en
 
 </div><div class="contents">
 
-In this document we create "dynamic" pages like blog posts.
+In this document we create "dynamic" pages for a blog.
 
 Estimated completion time: 20 minutes.
 
 **Table of contents**
 
 * [01. Blog](#blog)
-* [02. Investigate `cfg` file](#cfg)
+* [02. Investigate `pskov.cfg` file](#cfg)
 * [03. Investigate item templates of the blog](#item)
 * [04. Investigate preview templates](#preview)
-* [05. Investigate index (summary) templates](#index)
+* [05. Investigate templates of preview pages](#index)
 * [06. Investigate pagination templates](#pagination)
 * [07. Investigate Markdown files](#md)
 * [08. Launch LFSA and generate the site](#gen)
@@ -30,11 +30,11 @@ Estimated completion time: 20 minutes.
 
 ## 01. Blog
 
-So, you have your web site in both English and Russian. You start to feel the need to constantly share your thoughts with the world as blog posts.
+So, you have your web site in both English and Russian. You start to feel the need to regularly share your thoughts with the world as blog posts.
 
 You set on to create the following [directory structure][03-files]:
 
-* `cfg`
+* `pskov.cfg`
 * `en/blog/`
     * `item.template`
     * `index.template`
@@ -78,9 +78,9 @@ Let's look at the contents of these files closer.
 
 <a name="cfg"/>
 
-## 02. Investigate `cfg` file
+## 02. Investigate `pskov.cfg` file
 
-`cfg` file has the following contents:
+`pskov.cfg` file has the following contents:
 
 ```
 input = en/page;ru/page;en/blog;ru/blog
@@ -96,26 +96,26 @@ previewsPerPage = 3
 previewPageBaseName = index
 ```
 
-Apart from already used `input` and `item` keys, we have quite a lot of new ones. Let's break them down:
+You already met `input` and `item` keys. Let's see into new ones:
 
 | Key | Description |
 |---|---|
-| `preview` | Points to an HTML template file that is used to generate HTML previews out of the first `previewSize` (approximately) characters of Markdown files |
-| `index` | Points to an HTML template file that is used to generate HTML index (summary) files to host previews |
-| `paginationPrev` | Points to an HTML template file that is used to generate pagination section used by the *last* index (summary) file |
-| `paginationNext` | Points to an HTML template file that is used to generate pagination section used by the *first* index (summary) file |
-| `paginationPrevNext` | Points to an HTML template file that is used to generate pagination section used by index (summary) files *except the ones at the beginning and at the end* |
-| `previewSize` | How many characters (approximately) to take out of a Markdown file to generate an HTML preview |
-| `previewEnding` | String to use at the end of HTML previews |
-| `previewsPerPage` | Number of HTML previews hosted by single index (summary) file |
-| `previewsPageBaseName` | Index (summary) file base name |
+| `preview` | Points to an HTML template that is used to generate HTML preview out of the first `previewSize` (approximately) characters for each Markdown file |
+| `index` | Points to an HTML template that is used to generate preview page to host previews |
+| `paginationPrev` | Points to an HTML template that is used to generate pagination section to navigate backwards |
+| `paginationNext` | Points to an HTML template that is used to generate pagination section to navigate forward |
+| `paginationPrevNext` | Points to an HTML template that is used to generate pagination section |
+| `previewSize` | How many characters (approximately) to take out of a Markdown file to generate a preview |
+| `previewEnding` | String to use at the end of each preview |
+| `previewsPerPage` | Maximum number of previews hosted by a preview page |
+| `previewsPageBaseName` | Base file name for preview pages |
 
 In our case:
 
 * we restrict previews to `200` characters in size (approximately)
 * we use `. . .` string at the end of each preview
-* index (summary) files host `3` previews maximum
-* index (summary) files are saved as `index.html`, `index2.html`, `index3.html`, etc.
+* preview pages host `3` previews maximum
+* preview pages are saved as `index.html`, `index2.html`, `index3.html`, etc.
 
 <a name="item"/>
 
@@ -190,15 +190,15 @@ As you can see, both files look similar to `item.template` files we saw [before]
 
 The changes include:
 
-* new URLs to reference pages in `page` directory and first index (summary) file in `blog` directory
-* title is now referenced inside `contents` section as a link to complete page
+* new URLs to reference pages in `page` directory and the first preview page in `blog` directory
+* title is referenced inside `contents` section as a link pointing to a complete blog post
 * date is referenced to highlight relationship among different blog posts in time
 
 Date reference uses new `PSKOV_ITEM_DATE` constant:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_ITEM_DATE` | Provides date from `Date:` part of page's header section |
+| `PSKOV_ITEM_DATE` | Value of `Date` key of the page's Markdown file |
 
 <a name="preview"/>
 
@@ -234,17 +234,17 @@ Date reference uses new `PSKOV_ITEM_DATE` constant:
     </div>
     ```
 
-Previews have no `<head>`, `<body>`, and similar full page HTML tags. Previews represent sections inserted into index (summary) files.
+Previews have no `<head>`, `<body>`, and similar full page HTML tags. Previews represent sections inserted into preview pages.
 
 Preview itself is referenced by `PSKOV_PREVIEW` constant:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_PREVIEW` | Provides contents from a Markdown file limited by `previewSize` characters (approximately) |
+| `PSKOV_PREVIEW` | Provides contents of a Markdown file limited by `previewSize` characters (approximately) |
 
 <a name="index"/>
 
-## 05. Investigate index (summary) templates
+## 05. Investigate templates of preview pages
 
 * `en/blog/index.template` contents:
 
@@ -305,29 +305,27 @@ Preview itself is referenced by `PSKOV_PREVIEW` constant:
 * beginning and ending were collapsed for brevity
 * `PSKOV_INDEX_URL` constant is used to provide language selection
 
-Index (summary) files are used to host previews.
-
 Here are new **PSKOV** constants explained:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_INDEX_URL` | Provides generated page's file name: `<previewsPageBaseName><id>.html` |
-| `PSKOV_PREVIEWS` | Provides a combination of `PSKOV_PREVIEW` sections |
-| `PSKOV_PAGINATION` | Provides pagination section to navigate index (summary) pages |
+| `PSKOV_INDEX_URL` | Provides generated preview page file name: `<previewsPageBaseName><id>.html` |
+| `PSKOV_PREVIEWS` | Provides a set of previews |
+| `PSKOV_PAGINATION` | Provides pagination section to navigate preview pages |
 
 <a name="pagination"/>
 
 ## 06. Investigate pagination templates
 
-Pagination templates represent sections used to navigate index (summary) pages.
+Pagination templates represent HTML sections to navigate preview pages.
 
 There are free pagination templates:
 
 | Pagination template | Description |
 |---|---|
-| prev | Is used for the last index (summary) page because we can only go backwards |
-| next | Is used for the first index (summary) page because we can only go forward |
-| both | Is used for intermediate index (summary) pages because we can either go backwards, or forward |
+| Previous | A visitor can only go backwards |
+| Next | A visitor can only go forward |
+| Both | A visitor can either go backwards, or forward |
 
 Let's look at English pagination templates:
 
@@ -373,10 +371,10 @@ Here are new **PSKOV** constants we used:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_PAGE_ID` | Provides index (summary) page id starting from `1` |
-| `PSKOV_PAGES_COUNT` | Provides total number of index (summary) pages generated |
-| `PSKOV_PREV_PAGE_URL` | Provides previous index (summary) page file name |
-| `PSKOV_NEXT_PAGE_URL` | Provides next index (summary) page file name |
+| `PSKOV_PAGE_ID` | Provides preview page id starting from `1` |
+| `PSKOV_PAGES_COUNT` | Provides total number of generated preview pages |
+| `PSKOV_PREV_PAGE_URL` | Provides previous preview page file name |
+| `PSKOV_NEXT_PAGE_URL` | Provides next preview page file name |
 
 <a name="md"/>
 
@@ -396,11 +394,11 @@ Markdown files represent blog posts and they look almost like Markdown files for
  [bullocks]: https://upload.wikimedia.org/wikipedia/commons/c/cb/Walentin_Aleksandrovich_Serov_Bullocks.jpg
 ```
 
-Date is used to sort blog posts by date in ascending order:
+Date is used to sort blog posts by date in descending order:
 
-| Header constant | Description |
+| Header key | Description |
 |---|---|
-| `Date:` | Provides value for `PSKOV_ITEM_DATE` constant when generating HTML out of Markdown |
+| `Date` | Provides value for `PSKOV_ITEM_DATE` constant when generating HTML out of Markdown |
 
 <a name="gen"/>
 
@@ -409,7 +407,7 @@ Date is used to sort blog posts by date in ascending order:
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
 ```
-$ /path/to/lfsa-201905.py /path/to/dir/03.Blog
+$ /path/to/lfsa_1.0.0.py /path/to/dir/03.Blog
 ```
 
 Generate the site:
@@ -417,49 +415,49 @@ Generate the site:
 * Go to [Tool][tool] page
 * Press `Generate` button
 * Open generated `en/blog/index.html` or `ru/blog/index.html` from the site's directory locally
-* Navigate index (summary) pages to make sure everything works fine
+* Navigate preview pages to make sure everything works fine
 
 <a name="summary"/>
 
 ## 09. Summary
 
-You have successfully generated a web site with "constant" and "dynamic" pages. [Check out the result][03-sample].
+You have successfully generated a web site with "dynamic" blog posts. [Check out the result][03-sample].
 
 Introduced PSKOV constants include:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_ITEM_DATE` | Provides date from `Date:` part of page's header section |
-| `PSKOV_PREVIEW` | Provides contents from a Markdown file limited by `previewSize` characters (approximately) |
-| `PSKOV_INDEX_URL` | Provides generated page's file name: `<previewsPageBaseName><id>.html` |
-| `PSKOV_PREVIEWS` | Provides a combination of `PSKOV_PREVIEW` sections |
-| `PSKOV_PAGINATION` | Provides pagination section to navigate index (summary) pages |
-| `PSKOV_PAGE_ID` | Provides index (summary) page id starting from `1` |
-| `PSKOV_PAGES_COUNT` | Provides total number of index (summary) pages generated |
-| `PSKOV_PREV_PAGE_URL` | Provides previous index (summary) page file name |
-| `PSKOV_NEXT_PAGE_URL` | Provides next index (summary) page file name |
+| `PSKOV_ITEM_DATE` | Value of `Date` key of the page's Markdown file |
+| `PSKOV_PREVIEW` | Provides contents of a Markdown file limited by `previewSize` characters (approximately) |
+| `PSKOV_INDEX_URL` | Provides generated preview page file name: `<previewsPageBaseName><id>.html` |
+| `PSKOV_PREVIEWS` | Provides a set of previews |
+| `PSKOV_PAGINATION` | Provides pagination section to navigate preview pages |
+| `PSKOV_PAGE_ID` | Provides preview page id starting from `1` |
+| `PSKOV_PAGES_COUNT` | Provides total number of generated preview pages |
+| `PSKOV_PREV_PAGE_URL` | Provides previous preview page file name |
+| `PSKOV_NEXT_PAGE_URL` | Provides next preview page file name |
 
 Introduced configuration keys include:
 
 | Key | Description |
 |---|---|
-| `preview` | Points to an HTML template file that is used to generate HTML previews out of the first `previewSize` (approximately) characters of Markdown files |
-| `index` | Points to an HTML template file that is used to generate HTML index (summary) files to host previews |
-| `paginationPrev` | Points to an HTML template file that is used to generate pagination section used by the *last* index (summary) file |
-| `paginationNext` | Points to an HTML template file that is used to generate pagination section used by the *first* index (summary) file |
-| `paginationPrevNext` | Points to an HTML template file that is used to generate pagination section used by index (summary) files *except the ones at the beginning and at the end* |
-| `previewSize` | How many characters (approximately) to take out of a Markdown file to generate an HTML preview |
-| `previewEnding` | String to use at the end of HTML previews |
-| `previewsPerPage` | Number of HTML previews hosted by single index (summary) file |
-| `previewsPageBaseName` | Index (summary) file base name |
+| `preview` | Points to an HTML template that is used to generate HTML preview out of the first `previewSize` (approximately) characters for each Markdown file |
+| `index` | Points to an HTML template that is used to generate preview page to host previews |
+| `paginationPrev` | Points to an HTML template that is used to generate pagination section to navigate backwards |
+| `paginationNext` | Points to an HTML template that is used to generate pagination section to navigate forward |
+| `paginationPrevNext` | Points to an HTML template that is used to generate pagination section |
+| `previewSize` | How many characters (approximately) to take out of a Markdown file to generate a preview |
+| `previewEnding` | String to use at the end of each preview |
+| `previewsPerPage` | Maximum number of previews hosted by a preview page |
+| `previewsPageBaseName` | Base file name for preview pages |
 
-Introduced header constants include:
+Introduced header keys include:
 
-| Header constant | Description |
+| Header key | Description |
 |---|---|
-| `Date:` | Provides value for `PSKOV_ITEM_DATE` constant when generating HTML out of Markdown |
+| `Date` | Provides value for `PSKOV_ITEM_DATE` constant when generating HTML out of Markdown |
 
-This was the final document to make you proficient in generating static sites with **PSKOV**. If you like what we do, support us by joining our group at [Twitter][tw], [Facebook][fb], or [VK][vk].
+This was the final document to make you proficient in generating static sites with **PSKOV**. If you like what we do, join us at [VK][vk], [Twitter][tw], or [Facebook][fb].
 
 Now use **PSKOV** to generate your very own web site!
 
@@ -477,6 +475,6 @@ Now use **PSKOV** to generate your very own web site!
 [lfsa]: http://opengamestudio.org/lfsa
 [tool]: http://opengamestudio.org/pskov
 
+[vk]: https://vk.com/opengamestudo
 [tw]: https://twitter.com/OpenGameStudio
 [fb]: https://www.facebook.com/groups/162611230470183
-[vk]: https://vk.com/opengamestudo

@@ -1,5 +1,5 @@
 Title: Education: 02. Dependencies
-Date: 2019-05-14 00:00
+Date: 2019-06-18 00:00
 Category: Page
 Slug: education.02.deps
 Lang: en
@@ -60,5 +60,5 @@ We designed **PSKOV** to run inside web browsers. Here is what you need to run *
 [next]: education.03.site.html
 
 [lfsa]: http://opengamestudio.org/lfsa
-[lfsa-src]: https://bitbucket.org/ogstudio/lfsa/src/default/lfsa-201905.py
+[lfsa-src]: https://bitbucket.org/ogstudio/lfsa/src/default/lfsa_1.0.0.py
 [showdown]: https://github.com/showdownjs/showdown

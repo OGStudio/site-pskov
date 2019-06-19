@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <style>
+            #header
+            {
+                background: #856d51;
+                padding: 0.7em;
+                text-align: left;
+            }
+            
+            #header a
+            {
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+            #title
+            {
+                color: #433729;
+            }
+            html
+            {
+                font-family: sans-serif;
+            }
+            body
+            {
+                line-height: 1.5em;
+            }
+            body
+            {
+                background: #FAFAFA;
+            }
+            table
+            {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table, th, td
+            {
+                border: 1px solid #aaa;
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            code, pre
+            {
+                font-family: monospace, serif;
+                font-size: 1em;
+                color: #7f0a0c;
+                background: #f5f5f5;
+                white-space: pre-wrap;
+            }
+            .contents
+            {
+                background: #FFFFFF;
+                width: 720px;
+                padding: 1em;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                border: 1px solid #E0E0E0;
+                text-align: left;
+                color: #444;
+            }
+            #footer
+            {
+                text-align: center;
+            }
+            #lang
+            {
+                float: right;
+            }
+        </style>
+        <title>
+            PSKOV
+        </title>
+    </head>
+    <body>
+        <div id="header">
+            <strong id="title">ПСКОВ</strong>
+            <a href="pskov_1.0.0+ru.html">Инструмент</a>
+            <a href="education.html">Обучение</a>
+            <div id="lang">
+                <a href="../en/education.02.deps.html">EN</a>
+                <a href="../ru/education.02.deps.html">RU</a>
+            </div>
+        </div>
+        <center><h1>
+Обучение: 02. Зависимости
+        </h1></center>
+        <center><div class="contents">
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.01.why.html">01. Почему</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td><a href="education.03.site.html">03. Сайт</a></td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<p>В этом документы мы коснёмся зависимостей <strong>ПСКОВА</strong> и их установку.</p>
+<p>Ожидаемое время завершения: 5 минут.</p>
+<p><strong>Содержание</strong></p>
+<ul>
+<li><a href="#deps">01. Зависимости</a></li>
+<li><a href="#details">02. Подробности</a></li>
+</ul>
+<p><a name="deps"/></p>
+<h2 id="01">01. Зависимости</h2>
+<p>Мы спроектировали <strong>ПСКОВ</strong> таким образом, чтобы он исполнялся в веб-браузере. Для запуска <strong>ПСКОВА</strong> вам понадобятся:</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Зависимость ПСКОВА</th>
+<th>Подробности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Веб-браузер 2010-го года или новее</td>
+<td><strong>ПСКОВ</strong> использует ECMAScript 5 (2009), любой современный веб-браузер должен подойти</td>
+</tr>
+<tr>
+<td>2</td>
+<td>К локальной файловой системе доступ</td>
+<td><a href="http://opengamestudio.org/lfsa/ru">ЛФСД</a> предоставляет <strong>ПСКОВУ</strong> доступ к вашей локальной файловой системе. Установите ЛФСД, чтобы использовать <strong>ПСКОВ</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Внимание</strong>: <a href="http://opengamestudio.org/lfsa/ru">установите ЛФСД</a>, чтобы использовать <strong>ПСКОВ</strong>.</p>
+<p><a name="details"/></p>
+<h2 id="02">02. Подробности</h2>
+<p><strong>ПСКОВ</strong>:</p>
+<ul>
+<li>является приложением JavaScript на стороне клиента</li>
+<li>не имеет прямого доступа к локальной файловой системе</li>
+<li>использует <a href="http://opengamestudio.org/lfsa/ru">ЛФСД</a> для доступа к локальной файловой системе</li>
+<li>использует <a href="https://github.com/showdownjs/showdown">Showdown</a> для перевода Markdown в HTML</li>
+</ul>
+<p><strong>ЛФСД</strong>:</p>
+<ul>
+<li>является крошечным веб-сервером, предоставляющим доступ к локальной файловой системе</li>
+<li>использует порт 8000</li>
+<li>занимает менее 200 строк кода, <a href="https://bitbucket.org/ogstudio/lfsa/src/default/lfsa_1.0.0.py">удостоверьтесь в этом</a> сами</li>
+</ul>
+<p></div><div class="contents"></p>
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.01.why.html">01. Почему</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td><a href="education.03.site.html">03. Сайт</a></td>
+</tr>
+</tbody>
+</table>
+        </div></center>
+        <div id="footer">
+            Сайт сгенерирован <a href="http://opengamestudio.org/pskov">ПСКОВОМ</a>
+            из <a href="http://github.com/ogstudio/site-pskov">этого исходного кода</a>.
+            Сайт расположен на <a href="https://pages.github.com">GitHub Pages</a>.
+        </div>
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
+

@@ -6,8 +6,17 @@ site-pskov.UI.Tool
 site-pskov.UI.Education
 site-pskov.UI.Contents
 site-pskov.UI.ContentsTitle
+site-pskov.UI.Footer
+site-pskov.UI.Lang
+
 pskov.pskov_1.0.0.Style
 pskov.pskov_1.0.0.UI
 pskov.pskov_1.0.0.Script
+
+site-pskov.UI.Education-ru
+site-pskov.UI.Footer-ru
+site-pskov.UI.Tool-ru
+site-pskov.UI.Title-ru
+
 pskov.pskov_1.0.0.UI-ru
 pskov.pskov_1.0.0.Script-ru

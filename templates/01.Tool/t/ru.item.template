@@ -9,24 +9,22 @@ AMLEO site-pskov.UI.Base/Style
             AMLEO site-pskov.UI.Contents/Style
             AMLEO site-pskov.UI.Footer/Style
             AMLEO site-pskov.UI.Lang/Style
-            AMLEO pskov.pskov_1.0.0.Style/Impl
 AMLEO site-pskov.UI.Base/Title
-            AMLEO site-pskov.UI.Title/Tool
+            AMLEO site-pskov.UI.Title/Others
 AMLEO site-pskov.UI.Base/Body
         AMLEO site-pskov.UI.Menu/Start
-            AMLEO site-pskov.UI.Title/Body
-            AMLEO site-pskov.UI.Tool/Menu
-            AMLEO site-pskov.UI.Education/Menu
-            AMLEO site-pskov.UI.Lang/Tool
+            AMLEO site-pskov.UI.Title-ru/Body
+            AMLEO site-pskov.UI.Tool-ru/Menu
+            AMLEO site-pskov.UI.Education-ru/Menu
+            AMLEO site-pskov.UI.Lang/Menu
         AMLEO site-pskov.UI.Menu/End
         AMLEO site-pskov.UI.ContentsTitle/Begin
-            AMLEO site-pskov.UI.Tool/Title
+PSKOV_ITEM_TITLE
         AMLEO site-pskov.UI.ContentsTitle/End
         AMLEO site-pskov.UI.Contents/Begin
-            AMLEO site-pskov.UI.Tool/Desc
-            AMLEO pskov.pskov_1.0.0.UI/Impl
+PSKOV_ITEM_CONTENTS
         AMLEO site-pskov.UI.Contents/End
-        AMLEO site-pskov.UI.Footer/Body
+        AMLEO site-pskov.UI.Footer-ru/Body
 AMLEO site-pskov.UI.Base/Script
-            AMLEO pskov.pskov_1.0.0.Script/Impl
 AMLEO site-pskov.UI.Base/End
+

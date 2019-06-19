@@ -1,5 +1,5 @@
 Title: Education: 04. Language
-Date: 2019-05-21 00:00
+Date: 2019-06-18 00:00
 Category: Page
 Slug: education.04.lang
 Lang: en
@@ -17,7 +17,7 @@ Estimated completion time: 10 minutes.
 **Table of contents**
 
 * [01. Localization](#localization)
-* [02. Investigate `cfg` file](#cfg)
+* [02. Investigate `pskov.cfg` file](#cfg)
 * [03. Investigate template files](#item)
 * [04. Investigate Markdown files](#md)
 * [05. Launch LFSA and generate the site](#gen)
@@ -31,7 +31,7 @@ Now that you have your web site in English you start to wonder why there's no Ru
 
 You set on to create the following [directory structure][02-files]:
 
-* `cfg`
+* `pskov.cfg`
 * `en/item.template`
 * `en/about.md`
 * `en/cv.md`
@@ -43,9 +43,9 @@ Let's look at the contents of these files closer.
 
 <a name="cfg"/>
 
-## 02. Investigate `cfg` file
+## 02. Investigate `pskov.cfg` file
 
-`cfg` file has the following contents:
+`pskov.cfg` file has the following contents:
 
 ```
 input = en;ru
@@ -112,7 +112,7 @@ Language selection uses new **PSKOV** constant:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_ITEM_URL` | Provides generated page's file name: `<slug>.html` |
+| `PSKOV_ITEM_URL` | Provides generated page's file name |
 
 As you see, `PSKOV_ITEM_URL` is all you need to have your page in as many languages as you please.
 
@@ -120,7 +120,7 @@ As you see, `PSKOV_ITEM_URL` is all you need to have your page in as many langua
 
 ## 04. Investigate Markdown files
 
-`en/about.md` and `en/cv.md` files look almost exactly as [before][prev]. `ru/about.md` and `ru/cv.md` are simply Russian variants of the same pages.
+`en/about.md` and `en/cv.md` files look almost exactly as [before][prev]. `ru/about.md` and `ru/cv.md` are simply Russian variants of corresponding pages.
 
 For example, `ru/cv.md` has the following contents:
 
@@ -140,7 +140,7 @@ For example, `ru/cv.md` has the following contents:
  | Звания | * академик ИАХ (1898) <br> * действительный член ИАХ (1903) |
 ```
 
-**Note**: Russian page has exactly the same `Slug:` value as English one.
+**Note**: Russian page has exactly the same `Slug` value as English one.
 
 <a name="gen"/>
 
@@ -149,7 +149,7 @@ For example, `ru/cv.md` has the following contents:
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
 ```
-$ /path/to/lfsa-201905.py /path/to/dir/02.Language
+$ /path/to/lfsa_1.0.0.py /path/to/dir/02.Language
 ```
 
 Generate the site:
@@ -169,7 +169,7 @@ Introduced PSKOV constants include:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_ITEM_URL` | Provides generated page's file name: `<slug>.html` |
+| `PSKOV_ITEM_URL` | Provides generated page's file name |
 
 </div><div class="contents">
 

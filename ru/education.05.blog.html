@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <style>
+            #header
+            {
+                background: #856d51;
+                padding: 0.7em;
+                text-align: left;
+            }
+            
+            #header a
+            {
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+            #title
+            {
+                color: #433729;
+            }
+            html
+            {
+                font-family: sans-serif;
+            }
+            body
+            {
+                line-height: 1.5em;
+            }
+            body
+            {
+                background: #FAFAFA;
+            }
+            table
+            {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table, th, td
+            {
+                border: 1px solid #aaa;
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            code, pre
+            {
+                font-family: monospace, serif;
+                font-size: 1em;
+                color: #7f0a0c;
+                background: #f5f5f5;
+                white-space: pre-wrap;
+            }
+            .contents
+            {
+                background: #FFFFFF;
+                width: 720px;
+                padding: 1em;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                border: 1px solid #E0E0E0;
+                text-align: left;
+                color: #444;
+            }
+            #footer
+            {
+                text-align: center;
+            }
+            #lang
+            {
+                float: right;
+            }
+        </style>
+        <title>
+            PSKOV
+        </title>
+    </head>
+    <body>
+        <div id="header">
+            <strong id="title">ПСКОВ</strong>
+            <a href="pskov_1.0.0+ru.html">Инструмент</a>
+            <a href="education.html">Обучение</a>
+            <div id="lang">
+                <a href="../en/education.05.blog.html">EN</a>
+                <a href="../ru/education.05.blog.html">RU</a>
+            </div>
+        </div>
+        <center><h1>
+Обучение: 05. Блог
+        </h1></center>
+        <center><div class="contents">
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.04.lang.html">04. Язык</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td>Отсутствует</td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<p>В этом документе мы создадим "динамические" страницы блога.</p>
+<p>Ожидаемое время завершения: 20 минут.</p>
+<p><strong>Содержание</strong></p>
+<ul>
+<li><a href="#blog">01. Блог</a></li>
+<li><a href="#cfg">02. Изучите файл <code>pskov.cfg</code></a></li>
+<li><a href="#item">03. Изучите шаблоны элементов</a></li>
+<li><a href="#preview">04. Изучите шаблоны предпросмотров</a></li>
+<li><a href="#index">05. Изучите шаблоны страниц с предпросмотрами</a></li>
+<li><a href="#pagination">06. Изучите постраничные шаблоны</a></li>
+<li><a href="#md">07. Изучите файлы Markdown</a></li>
+<li><a href="#gen">08. Запустите ЛФСД и сгенерируйте сайт</a></li>
+<li><a href="#summary">09. Итог</a></li>
+</ul>
+<p><a name="blog"/></p>
+<h2 id="01">01. Блог</h2>
+<p>Итак, у вас есть веб-сайт на Английском и Русском языках. Вы начинаете ощущать желание регулярно делиться своими мыслями с миром в виде заметок блога.</p>
+<p>Вы создаёте директорию со <a href="https://github.com/OGStudio/site-pskov-sample/tree/master/03.Blog">следующей структурой файлов</a>:</p>
+<ul>
+<li><code>pskov.cfg</code></li>
+<li><code>en/blog/</code><ul>
+<li><code>item.template</code></li>
+<li><code>index.template</code></li>
+<li><code>preview.template</code></li>
+<li><code>pagination.template</code></li>
+<li><code>pagination.prev.template</code></li>
+<li><code>pagination.next.template</code></li>
+<li><code>1885.md</code></li>
+<li><code>1886.01.md</code></li>
+<li><code>1886.02.md</code></li>
+<li><code>1887.01.md</code></li>
+<li><code>1887.02.md</code></li>
+<li><code>1888.md</code></li>
+<li><code>1896.md</code></li>
+<li><code>1899.md</code></li></ul></li>
+<li><code>en/page/</code><ul>
+<li><code>item.template</code></li>
+<li><code>about.md</code></li>
+<li><code>cv.md</code></li></ul></li>
+<li><code>ru/blog/</code><ul>
+<li><code>item.template</code></li>
+<li><code>index.template</code></li>
+<li><code>preview.template</code></li>
+<li><code>pagination.template</code></li>
+<li><code>pagination.prev.template</code></li>
+<li><code>pagination.next.template</code></li>
+<li><code>1885.md</code></li>
+<li><code>1886.01.md</code></li>
+<li><code>1886.02.md</code></li>
+<li><code>1887.01.md</code></li>
+<li><code>1887.02.md</code></li>
+<li><code>1888.md</code></li>
+<li><code>1896.md</code></li>
+<li><code>1899.md</code></li></ul></li>
+<li><code>ru/page/</code><ul>
+<li><code>item.template</code></li>
+<li><code>about.md</code></li>
+<li><code>cv.md</code></li></ul></li>
+</ul>
+<p>Давайте взглянем на содержимое этих файлов.</p>
+<p><a name="cfg"/></p>
+<h2 id="02pskovcfg">02. Изучите файл <code>pskov.cfg</code></h2>
+<p>Файл <code>pskov.cfg</code> содержит следующее:</p>
+<pre><code>input = en/page;ru/page;en/blog;ru/blog
+item = item.template
+preview = preview.template
+index = index.template
+paginationPrev = pagination.prev.template
+paginationNext = pagination.next.template
+paginationPrevNext = pagination.template
+previewSize = 200
+previewEnding = . . .
+previewsPerPage = 3
+previewPageBaseName = index
+</code></pre>
+<p>Вы уже встречались с ключами <code>input</code> и <code>item</code>. Рассмотрим остальные:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preview</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации предпросмотра HTML из первых <code>previewSize</code> (приблизительно) символов для каждого файла Markdown</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации страницы с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>paginationPrev</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации секции с переходом лишь на предыдущую страницу</td>
+</tr>
+<tr>
+<td><code>paginationNext</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации секции с переходм лишь на следующую страницу</td>
+</tr>
+<tr>
+<td><code>paginationPrevNext</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации секции с переходами по страницам</td>
+</tr>
+<tr>
+<td><code>previewSize</code></td>
+<td>Количество символов (приблизительное) из файла Markdown, используемое для генерации предпросмотра</td>
+</tr>
+<tr>
+<td><code>previewEnding</code></td>
+<td>Строка для добавления в конец каждого предпросмотра</td>
+</tr>
+<tr>
+<td><code>previewsPerPage</code></td>
+<td>Максимальное количество предпросмотров, умещающееся на странице с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>previewsPageBaseName</code></td>
+<td>Базовое имя файла для страниц с предпросмотрами</td>
+</tr>
+</tbody>
+</table>
+<p>В нашем случае:</p>
+<ul>
+<li>мы ограничиваем предпросмотр <code>200</code> символами (приблизительно)</li>
+<li>мы используем строку <code>. . .</code> в конце каждого предпросмотра</li>
+<li>страницы с предпросмотрами вмещают максимум <code>3</code> предпросмотра</li>
+<li>страницы с предпросмотрами будут сохранены как <code>index.html</code>, <code>index2.html</code>, <code>index3.html</code> и т.д.</li>
+</ul>
+<p><a name="item"/></p>
+<h2 id="03">03. Изучите шаблоны элементов</h2>
+<ul>
+<li><p>Содержимое <code>en/blog/item.template</code>:</p>
+<pre><code>- - - - Схлопнуто для краткости - - - -
+&lt;body&gt;
+    &lt;div id="header"&gt;
+        &lt;strong&gt;Serov&lt;/strong&gt;
+        &lt;a href="../../en/blog/index.html"&gt;Blog&lt;/a&gt;
+        &lt;a href="../../en/page/about.html"&gt;About me&lt;/a&gt;
+        &lt;a href="../../en/page/cv.html"&gt;CV&lt;/a&gt;
+        &lt;div id="lang"&gt;
+            &lt;a href="../../en/blog/PSKOV_ITEM_URL"&gt;EN&lt;/a&gt;
+            &lt;a href="../../ru/blog/PSKOV_ITEM_URL"&gt;RU&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;center&gt;
+        &lt;h1&gt;In the blog...&lt;/h1&gt;
+        &lt;div class="contents"&gt;
+            &lt;h2 class="itemTitle"&gt;
+                &lt;a href="PSKOV_ITEM_URL"&gt;PSKOV_ITEM_TITLE&lt;/a&gt;
+            &lt;/h2&gt;
+            &lt;p class="itemDate"&gt;PSKOV_ITEM_DATE&lt;/p&gt;
+PSKOV_ITEM_CONTENTS
+        &lt;/div&gt;
+        &lt;div id="footer"&gt;
+            This sample web site has been generated by &lt;a href="http://opengamestudio.org/pskov"&gt;PSKOV&lt;/a&gt;.
+        &lt;/div&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+- - - - Схлопнуто для краткости - - - -
+</code></pre></li>
+<li><p>Содержимое <code>ru/blog/item.template</code>:</p>
+<pre><code>- - - - Схлопнуто для краткости - - - -
+&lt;body&gt;
+    &lt;div id="header"&gt;
+        &lt;strong&gt;Серов&lt;/strong&gt;
+        &lt;a href="../../ru/blog/index.html"&gt;Блог&lt;/a&gt;
+        &lt;a href="../../ru/page/about.html"&gt;Обо мне&lt;/a&gt;
+        &lt;a href="../../ru/page/cv.html"&gt;Резюме&lt;/a&gt;
+        &lt;div id="lang"&gt;
+            &lt;a href="../../en/blog/PSKOV_ITEM_URL"&gt;EN&lt;/a&gt;
+            &lt;a href="../../ru/blog/PSKOV_ITEM_URL"&gt;RU&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;center&gt;
+        &lt;h1&gt;В блоге...&lt;/h1&gt;
+        &lt;div class="contents"&gt;
+            &lt;h2 class="itemTitle"&gt;
+                &lt;a href="PSKOV_ITEM_URL"&gt;PSKOV_ITEM_TITLE&lt;/a&gt;
+            &lt;/h2&gt;
+            &lt;p class="itemDate"&gt;PSKOV_ITEM_DATE&lt;/p&gt;
+PSKOV_ITEM_CONTENTS
+        &lt;/div&gt;
+        &lt;div id="footer"&gt;
+            Этот пример сайта сгенерирован &lt;a href="http://opengamestudio.org/pskov"&gt;ПСКОВОМ&lt;/a&gt;.
+        &lt;/div&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+- - - - Схлопнуто для краткости - - - -
+</code></pre></li>
+</ul>
+<p><strong>Внимание</strong>: начало и конец схлопнуты для краткости.</p>
+<p>Как видите, оба файла выглядят практически так же, как и файлы <code>item.template</code>, рассмотренные <a href="education.04.lang.html">ранее</a>.</p>
+<p>Изменения следующие:</p>
+<ul>
+<li>новые URL страниц в директории <code>page</code> и первой страницы с предпросмотрами в директории <code>blog</code></li>
+<li>заголовок используется внутри секции <code>contents</code> в качестве ссылки на полную заметку блога</li>
+<li>дата используется для подчёркивания временной зависимости между заметками блога</li>
+</ul>
+<p>Дату мы получаем из константы <code>PSKOV_ITEM_DATE</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_DATE</code></td>
+<td>Значение ключа <code>Date</code> файла Markdown</td>
+</tr>
+</tbody>
+</table>
+<p><a name="preview"/></p>
+<h2 id="04">04. Изучите шаблоны предпросмотров</h2>
+<ul>
+<li><p>Содержимое <code>en/blog/preview.template</code>:</p>
+<pre><code>&lt;div class="contents"&gt;
+    &lt;h2 class="itemTitle"&gt;
+        &lt;a href="PSKOV_ITEM_URL"&gt;PSKOV_ITEM_TITLE&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;p class="itemDate"&gt;PSKOV_ITEM_DATE&lt;/p&gt;
+PSKOV_PREVIEW
+    &lt;div class="itemMore"&gt;
+        &lt;a href="PSKOV_ITEM_URL"&gt;Continue reading&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></li>
+<li><p>Содержимое <code>ru/blog/preview.template</code>:</p>
+<pre><code>&lt;div class="contents"&gt;
+    &lt;h2 class="itemTitle"&gt;
+        &lt;a href="PSKOV_ITEM_URL"&gt;PSKOV_ITEM_TITLE&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;p class="itemDate"&gt;PSKOV_ITEM_DATE&lt;/p&gt;
+PSKOV_PREVIEW
+    &lt;div class="itemMore"&gt;
+        &lt;a href="PSKOV_ITEM_URL"&gt;Читать дальше&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></li>
+</ul>
+<p>У предпросмотров нет <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> и прочих полностраничных тэгов HTML. Предпросмотры являются секциями, вставляемыми в страницы с предпросмотрами.</p>
+<p>Сам предпросмотр мы получаем из константы <code>PSKOV_PREVIEW</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_PREVIEW</code></td>
+<td>Предоставляет содержимое файла Markdown, ограниченное <code>previewSize</code> символами (приблизительно)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="index"/></p>
+<h2 id="05">05. Изучите шаблоны страниц с предпросмотрами</h2>
+<ul>
+<li><p>Содержимое <code>en/blog/index.template</code>:</p>
+<pre><code>- - - - Схлопнуто для краткости - - - -
+&lt;body&gt;
+    &lt;div id="header"&gt;
+        &lt;strong&gt;Serov&lt;/strong&gt;
+        &lt;a href="../../en/blog/index.html"&gt;Blog&lt;/a&gt;
+        &lt;a href="../../en/page/about.html"&gt;About me&lt;/a&gt;
+        &lt;a href="../../en/page/cv.html"&gt;CV&lt;/a&gt;
+        &lt;div id="lang"&gt;
+            &lt;a href="../../en/blog/PSKOV_INDEX_URL"&gt;EN&lt;/a&gt;
+            &lt;a href="../../ru/blog/PSKOV_INDEX_URL"&gt;RU&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;center&gt;
+        &lt;h1&gt;Blog&lt;/h1&gt;
+PSKOV_PREVIEWS
+PSKOV_PAGINATION
+        &lt;div id="footer"&gt;
+            This sample web site has been generated by &lt;a href="http://opengamestudio.org/pskov"&gt;PSKOV&lt;/a&gt;.
+        &lt;/div&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+- - - - Схлопнуто для краткости - - - -
+</code></pre></li>
+<li><p>Содержимое <code>ru/blog/index.template</code>:</p>
+<pre><code>- - - - Схлопнуто для краткости - - - -
+&lt;body&gt;
+    &lt;div id="header"&gt;
+        &lt;strong&gt;Серов&lt;/strong&gt;
+        &lt;a href="../../ru/blog/index.html"&gt;Блог&lt;/a&gt;
+        &lt;a href="../../ru/page/about.html"&gt;Обо мне&lt;/a&gt;
+        &lt;a href="../../ru/page/cv.html"&gt;Резюме&lt;/a&gt;
+        &lt;div id="lang"&gt;
+            &lt;a href="../../en/blog/PSKOV_INDEX_URL"&gt;EN&lt;/a&gt;
+            &lt;a href="../../ru/blog/PSKOV_INDEX_URL"&gt;RU&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;center&gt;
+        &lt;h1&gt;Блог&lt;/h1&gt;
+PSKOV_PREVIEWS
+PSKOV_PAGINATION
+        &lt;div id="footer"&gt;
+            Этот пример сайта сгенерирован &lt;a href="http://opengamestudio.org/pskov"&gt;ПСКОВОМ&lt;/a&gt;.
+        &lt;/div&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+- - - - Схлопнуто для краткости - - - -
+</code></pre></li>
+</ul>
+<p><strong>Замечания</strong>:</p>
+<ul>
+<li>начало и конец схлопнуты для краткости</li>
+<li>константа <code>PSKOV_INDEX_URL</code> используется для выбора языка</li>
+</ul>
+<p>Новые константы <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_INDEX_URL</code></td>
+<td>Предоставляет генерируемое имя файла страницы с предпросмотрами: <code>&lt;previewsPageBaseName&gt;&lt;id&gt;.html</code></td>
+</tr>
+<tr>
+<td><code>PSKOV_PREVIEWS</code></td>
+<td>Предоставляет набор предпросмотров</td>
+</tr>
+<tr>
+<td><code>PSKOV_PAGINATION</code></td>
+<td>Предоставляет секцию для перехода между страницами с предпросмотрами</td>
+</tr>
+</tbody>
+</table>
+<p><a name="pagination"/></p>
+<h2 id="06">06. Изучите постраничные шаблоны</h2>
+<p>Постраничные шаблоны являются секциями HTML для перехода между страницами с предпросмотрами.</p>
+<p>Существует три постраничных шаблона:</p>
+<table>
+<thead>
+<tr>
+<th>Постраничный шаблон</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Предыдущий</td>
+<td>Посетитель может перейти лишь назад</td>
+</tr>
+<tr>
+<td>Следующий</td>
+<td>Посетитель может перейти лишь вперёд</td>
+</tr>
+<tr>
+<td>Оба</td>
+<td>Посетитель может перейти либо вперёд, либо назад</td>
+</tr>
+</tbody>
+</table>
+<p>Рассмотрим английские постраничные шаблоны:</p>
+<ul>
+<li><p>Содержимое <code>en/blog/pagination.prev.template</code>:</p>
+<pre><code>&lt;p&gt;Page PSKOV_PAGE_ID of PSKOV_PAGES_COUNT&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href="PSKOV_PREV_PAGE_URL"&gt;« Newer&lt;/a&gt;
+&lt;/p&gt;
+</code></pre></li>
+<li><p>Содержимое <code>en/blog/pagination.next.template</code>:</p>
+<pre><code>&lt;p&gt;Page PSKOV_PAGE_ID of PSKOV_PAGES_COUNT&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href="PSKOV_NEXT_PAGE_URL"&gt;Older »&lt;/a&gt;
+&lt;/p&gt;
+</code></pre></li>
+<li><p>Содержимое <code>en/blog/pagination.template</code>:</p>
+<pre><code>&lt;p&gt;Page PSKOV_PAGE_ID of PSKOV_PAGES_COUNT&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href="PSKOV_PREV_PAGE_URL"&gt;« Newer&lt;/a&gt;
+    &lt;a href="PSKOV_NEXT_PAGE_URL"&gt;Older »&lt;/a&gt;
+&lt;/p&gt;
+</code></pre></li>
+</ul>
+<p>Русские версии выглядят схожим образом. Например, содержимое <code>ru/blog/pagination.template</code>:</p>
+<pre><code>&lt;p&gt;Страница PSKOV_PAGE_ID из PSKOV_PAGES_COUNT&lt;/p&gt;
+&lt;p&gt;
+    &lt;a href="PSKOV_PREV_PAGE_URL"&gt;« Новее&lt;/a&gt;
+    &lt;a href="PSKOV_NEXT_PAGE_URL"&gt;Старее »&lt;/a&gt;
+&lt;/p&gt;
+</code></pre>
+<p>Новые константы <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_PAGE_ID</code></td>
+<td>Предоставляет порядковый номер страницы с предпросмотрами, начиная с <code>1</code></td>
+</tr>
+<tr>
+<td><code>PSKOV_PAGES_COUNT</code></td>
+<td>Предоставляет количество сгенерированных страниц с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>PSKOV_PREV_PAGE_URL</code></td>
+<td>Предоставляет имя файла предыдущей страницы с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>PSKOV_NEXT_PAGE_URL</code></td>
+<td>Предоставляет имя файла следующей страницы с предпросмотрами</td>
+</tr>
+</tbody>
+</table>
+<p><a name="md"/></p>
+<h2 id="07markdown">07. Изучите файлы Markdown</h2>
+<p>Файлы Markdown являются заметками блога, они похожи на файлы Markdown обычных страниц. Вот как выглядит содержимое <code>en/blog/1885.md</code>:</p>
+<pre><code> Title: Bullocks
+ Date: 1885
+ Slug: 1885.01.bullocks
+
+ ![Bullocks][bullocks]
+
+ I've been painting "Bullocks" sketch while I was staying in Odessa at Kuznetsov's in 1885.
+
+ [bullocks]: https://upload.wikimedia.org/wikipedia/commons/c/cb/Walentin_Aleksandrovich_Serov_Bullocks.jpg
+</code></pre>
+<p>Заметки блога сортируются по дате: новые заметки размещаются перед старыми.</p>
+<table>
+<thead>
+<tr>
+<th>Ключ заголовка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Date</code></td>
+<td>Предоставляет значение для константы <code>PSKOV_ITEM_DATE</code> при генерации HTML из Markdown</td>
+</tr>
+</tbody>
+</table>
+<p><a name="gen"/></p>
+<h2 id="08">08. Запустите ЛФСД и сгенерируйте сайт</h2>
+<p>Запустите <a href="http://opengamestudio.org/lfsa/ru">ЛФСД</a> с указанием директории, содержащей только что рассмотренные файлы:</p>
+<pre><code>$ /путь/до/lfsa_1.0.0.py /путь/до/директории/03.Blog
+</code></pre>
+<p>Сгенерируйте сайт:</p>
+<ul>
+<li>Перейдите на страницу <a href="http://opengamestudio.org/pskov/ru/pskov_1.0.0+ru.html">Инструмент</a></li>
+<li>Нажмите кнопку <code>Генерировать</code></li>
+<li>Откройте сгенерированный файл <code>en/blog/index.html</code> или <code>ru/blog/index.html</code> из директории сайта</li>
+<li>Осуществите переход между страницами предпросмотра</li>
+</ul>
+<p><a name="summary"/></p>
+<h2 id="09">09. Итог</h2>
+<p>Вы успешно сгенерировали веб-сайт с "динамическими" страницами блога. <a href="http://opengamestudio.org/pskov/sample/03.Blog/ru/blog/index.html">Проверьте результат</a>.</p>
+<p>Представлены константы <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_DATE</code></td>
+<td>Значение ключа <code>Date</code> файла Markdown</td>
+</tr>
+<tr>
+<td><code>PSKOV_PREVIEW</code></td>
+<td>Предоставляет содержимое файла Markdown, ограниченное <code>previewSize</code> символами (приблизительно)</td>
+</tr>
+<tr>
+<td><code>PSKOV_INDEX_URL</code></td>
+<td>Предоставляет генерируемое имя файла страницы с предпросмотрами: <code>&lt;previewsPageBaseName&gt;&lt;id&gt;.html</code></td>
+</tr>
+<tr>
+<td><code>PSKOV_PREVIEWS</code></td>
+<td>Предоставляет набор предпросмотров</td>
+</tr>
+<tr>
+<td><code>PSKOV_PAGINATION</code></td>
+<td>Предоставляет секцию для перехода между страницами с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>PSKOV_PAGE_ID</code></td>
+<td>Предоставляет порядковый номер страницы с предпросмотрами, начиная с <code>1</code></td>
+</tr>
+<tr>
+<td><code>PSKOV_PAGES_COUNT</code></td>
+<td>Предоставляет количество сгенерированных страниц с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>PSKOV_PREV_PAGE_URL</code></td>
+<td>Предоставляет имя файла предыдущей страницы с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>PSKOV_NEXT_PAGE_URL</code></td>
+<td>Предоставляет имя файла следующей страницы с предпросмотрами</td>
+</tr>
+</tbody>
+</table>
+<p>Представлены ключи настроек:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preview</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации предпросмотра HTML из первых <code>previewSize</code> (приблизительно) символов для каждого файла Markdown</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации страницы с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>paginationPrev</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации секции с переходом лишь на предыдущую страницу</td>
+</tr>
+<tr>
+<td><code>paginationNext</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации секции с переходм лишь на следующую страницу</td>
+</tr>
+<tr>
+<td><code>paginationPrevNext</code></td>
+<td>Указывает на шаблон HTML, используемый для генерации секции с переходами по страницам</td>
+</tr>
+<tr>
+<td><code>previewSize</code></td>
+<td>Количество символов (приблизительное) из файла Markdown, используемое для генерации предпросмотра</td>
+</tr>
+<tr>
+<td><code>previewEnding</code></td>
+<td>Строка для добавления в конец каждого предпросмотра</td>
+</tr>
+<tr>
+<td><code>previewsPerPage</code></td>
+<td>Максимальное количество предпросмотров, умещающееся на странице с предпросмотрами</td>
+</tr>
+<tr>
+<td><code>previewsPageBaseName</code></td>
+<td>Базовое имя файла для страниц с предпросмотрами</td>
+</tr>
+</tbody>
+</table>
+<p>Представлены ключи заголовка:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ заголовка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Date</code></td>
+<td>Предоставляет значение для константы <code>PSKOV_ITEM_DATE</code> при генерации HTML из Markdown</td>
+</tr>
+</tbody>
+</table>
+<p>Это был последний документ, призванный научить вас уверенно владеть генератором статических сайтов <strong>ПСКОВ</strong>. Если вам нравится наш труд, присоединяйтесь к нам в <a href="https://vk.com/opengamestudo">VK</a>, <a href="https://twitter.com/OpenGameStudio">Twitter</a> или <a href="https://www.facebook.com/groups/162611230470183">Facebook</a>.</p>
+<p>А теперь используйте <strong>ПСКОВ</strong> для генерация своего собственного веб-сайта!</p>
+<p></div><div class="contents"></p>
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.04.lang.html">04. Язык</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td>Отсутствует</td>
+</tr>
+</tbody>
+</table>
+        </div></center>
+        <div id="footer">
+            Сайт сгенерирован <a href="http://opengamestudio.org/pskov">ПСКОВОМ</a>
+            из <a href="http://github.com/ogstudio/site-pskov">этого исходного кода</a>.
+            Сайт расположен на <a href="https://pages.github.com">GitHub Pages</a>.
+        </div>
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
+

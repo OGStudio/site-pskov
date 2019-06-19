@@ -1,5 +1,5 @@
 Title: Education: 03. Site
-Date: 2019-05-14 00:00
+Date: 2019-06-18 00:00
 Category: Page
 Slug: education.03.site
 Lang: en
@@ -17,7 +17,7 @@ Estimated completion time: 10 minutes.
 **Table of contents**
 
 * [01. Inspiration](#inspiration)
-* [02. Investigate `cfg` file](#cfg)
+* [02. Investigate `pskov.cfg` file](#cfg)
 * [03. Investigate `item.template` file](#item)
 * [04. Investigate `about.md` and `cv.md` files](#md)
 * [05. Launch LFSA](#lfsa)
@@ -37,7 +37,7 @@ You set on to create the following pages:
 
 Some time later you have the following files in your [site directory][01-files]:
 
-* cfg
+* pskov.cfg
 * item.template
 * about.md
 * cv.md
@@ -46,23 +46,23 @@ Let's look at their contents closer.
 
 <a name="cfg"/>
 
-## 02. Investigate `cfg` file
+## 02. Investigate `pskov.cfg` file
 
-`cfg` file has the following contents:
+`pskov.cfg` file has the following contents:
 
 ```
 input = .
 item = item.template
 ```
 
-`cfg` is an [INI file][ini-file] with the following keys specified:
+`pskov.cfg` is an [INI file][ini-file] with the following keys specified:
 
 | Key | Description |
 |---|---|
 | `input` | Points to a directory where `item`'s file is located |
 | `item` | Points to an HTML template file that is used to generate HTML files out of Markdown ones |
 
-In our case, `item.template` file is located alongside `cfg`, so we use `.` to denote current directory.
+In our case, `item.template` file is located alongside `pskov.cfg`, so we use `.` to denote current directory.
 
 <a name="item"/>
 
@@ -105,13 +105,13 @@ As you can see, `item.template` is an average HTML file with two **PSKOV** const
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_ITEM_TITLE` | Provides title from `Title:` part of page's header section |
+| `PSKOV_ITEM_TITLE` | Value of `Title` key of the page's Markdown file |
 | `PSKOV_ITEM_CONTENTS` | Provides HTML contents generated out of Markdown contents |
 
 **Notes**:
 
 * other **PSKOV** constants are described later
-* page's header section is described below
+* page's Markdown file is described below
 
 <a name="md"/>
 
@@ -142,10 +142,10 @@ As you can see, `item.template` is an average HTML file with two **PSKOV** const
 
 `about.md` starts with a so-called header section:
 
-| Header constant | Description |
+| Header key | Description |
 |---|---|
-| `Title:` | Provides value for `PSKOV_ITEM_TITLE` constant when generating HTML out of Markdown |
-| `Slug:` | Tells **PSKOV** that particular Markdown file should be saved under `<slug>.html` filename |
+| `Title` | Provides value for `PSKOV_ITEM_TITLE` constant when generating HTML out of Markdown |
+| `Slug` | Tells **PSKOV** that particular Markdown file should be saved under `<slug>.html` filename |
 
 The rest of `about.md` contents is what any Markdown file looks like.
 
@@ -178,7 +178,7 @@ As you can see, there's nothing new in `cv.md` except for a Markdown table.
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
 ```
-$ /path/to/lfsa-201905.py /path/to/dir/01.TwoPages
+$ /path/to/lfsa_1.0.0.py /path/to/dir/01.TwoPages
 ```
 
 You should see output similar to this:
@@ -196,8 +196,8 @@ Now it's finally time to generate your personal web site:
 
 * Go to [Tool][tool] page
 * Make sure
-    * `Path:` points to the same directory you specified before
-    * `Input directory:` and `Item template:` have values from `cfg`
+    * `Path` points to the same directory you specified before
+    * `Input directory` and `Item template` have values from `pskov.cfg`
 * Press `Generate` button to generate HTML files right where Markdown ones reside
 * Open generated `about.html` from the site's directory
 * You should see your web site running locally
@@ -208,11 +208,11 @@ Now it's finally time to generate your personal web site:
 
 You have successfully generated a web site with two pages. [Check out the result][01-sample].
 
-Introduced PSKOV constants include:
+Introduced **PSKOV** constants include:
 
 | PSKOV constant | Description |
 |---|---|
-| `PSKOV_ITEM_TITLE` | Provides title from `Title:` part of page's header section |
+| `PSKOV_ITEM_TITLE` | Value of `Title` key of the page's Markdown file |
 | `PSKOV_ITEM_CONTENTS` | Provides HTML contents generated out of Markdown contents |
 
 Introduced configuration keys include:
@@ -222,12 +222,12 @@ Introduced configuration keys include:
 | `input` | Points to a directory where `item`'s file is located |
 | `item` | Points to an HTML template file that is used to generate HTML files out of Markdown ones |
 
-Introduced header constants include:
+Introduced header keys include:
 
-| Header constant | Description |
+| Header key | Description |
 |---|---|
-| `Title:` | Provides value for `PSKOV_ITEM_TITLE` constant when generating HTML out of Markdown |
-| `Slug:` | Tells **PSKOV** that particular Markdown file should be saved under `<slug>.html` filename |
+| `Title` | Provides value for `PSKOV_ITEM_TITLE` constant when generating HTML out of Markdown |
+| `Slug` | Tells **PSKOV** that particular Markdown file should be saved under `<slug>.html` filename |
 
 </div><div class="contents">
 

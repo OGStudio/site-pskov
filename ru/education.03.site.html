@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <style>
+            #header
+            {
+                background: #856d51;
+                padding: 0.7em;
+                text-align: left;
+            }
+            
+            #header a
+            {
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+            #title
+            {
+                color: #433729;
+            }
+            html
+            {
+                font-family: sans-serif;
+            }
+            body
+            {
+                line-height: 1.5em;
+            }
+            body
+            {
+                background: #FAFAFA;
+            }
+            table
+            {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table, th, td
+            {
+                border: 1px solid #aaa;
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+            }
+            code, pre
+            {
+                font-family: monospace, serif;
+                font-size: 1em;
+                color: #7f0a0c;
+                background: #f5f5f5;
+                white-space: pre-wrap;
+            }
+            .contents
+            {
+                background: #FFFFFF;
+                width: 720px;
+                padding: 1em;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                border: 1px solid #E0E0E0;
+                text-align: left;
+                color: #444;
+            }
+            #footer
+            {
+                text-align: center;
+            }
+            #lang
+            {
+                float: right;
+            }
+        </style>
+        <title>
+            PSKOV
+        </title>
+    </head>
+    <body>
+        <div id="header">
+            <strong id="title">ПСКОВ</strong>
+            <a href="pskov_1.0.0+ru.html">Инструмент</a>
+            <a href="education.html">Обучение</a>
+            <div id="lang">
+                <a href="../en/education.03.site.html">EN</a>
+                <a href="../ru/education.03.site.html">RU</a>
+            </div>
+        </div>
+        <center><h1>
+Обучение: 03. Сайт
+        </h1></center>
+        <center><div class="contents">
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.02.deps.html">02. Зависимости</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td><a href="education.04.lang.html">04. Язык</a></td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<p>В этом документы мы создадим простой статический сайт с двумя страницами.</p>
+<p>Ожидаемое время завершения: 10 минут.</p>
+<p><strong>Содержание</strong></p>
+<ul>
+<li><a href="#inspiration">01. Вдохновление</a></li>
+<li><a href="#cfg">02. Изучите файл <code>pskov.cfg</code></a></li>
+<li><a href="#item">03. Изучите файл <code>item.template</code></a></li>
+<li><a href="#md">04. Изучите файлы <code>about.md</code> и <code>cv.md</code></a></li>
+<li><a href="#lfsa">05. Запустите ЛФСД</a></li>
+<li><a href="#gen">06. Сгенерируйте сайт</a></li>
+<li><a href="#summary">07. Итог</a></li>
+</ul>
+<p><a name="inspiration"/></p>
+<h2 id="01">01. Вдохновление</h2>
+<p>Представьте, что вы являетесь выдающимся русским живописцем Валентином Серовым. Каждый раз, когда кто-либо хочет узнать о вас, он идёт на <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%80%D0%BE%D0%B2,_%D0%92%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87">Википедию</a>. Сегодня утром вы просыпаетесь раньше обычного с отчётливым желанием создать свой собственный веб-сайт.</p>
+<p>Вы приступаете к созданию следующих страницы:</p>
+<ul>
+<li>About me</li>
+<li>Curriculum vitae (CV)</li>
+</ul>
+<p>Несколько позже в <a href="https://github.com/OGStudio/site-pskov-sample/tree/master/01.TwoPages">директории вашего сайта</a> у вас оказываются следующие файлы:</p>
+<ul>
+<li>pskov.cfg</li>
+<li>item.template</li>
+<li>about.md</li>
+<li>cv.md</li>
+</ul>
+<p>Давайте взглянем на их содержимое.</p>
+<p><a name="cfg"/></p>
+<h2 id="02pskovcfg">02. Изучите файл <code>pskov.cfg</code></h2>
+<p>Файл <code>pskov.cfg</code> содержит следующее:</p>
+<pre><code>input = .
+item = item.template
+</code></pre>
+<p><code>pskov.cfg</code> является <a href="https://ru.wikipedia.org/wiki/.ini">файлом настроек</a> со следующими ключами:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td>Указывает на директорию с файлом, на который ссылается ключ <code>item</code></td>
+</tr>
+<tr>
+<td><code>item</code></td>
+<td>Указывает на файл с шаблоном HTML, который используется для генерации файлов HTML из Markdown</td>
+</tr>
+</tbody>
+</table>
+<p>В нашем случае файл <code>item.template</code> расположен рядом с <code>pskov.cfg</code>, поэтому мы используем <code>.</code> для обозначения текущей директории.</p>
+<p><a name="item"/></p>
+<h2 id="03itemtemplate">03. Изучите файл <code>item.template</code></h2>
+<p>Файл <code>item.template</code> содержит следующее:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;head&gt;
+        &lt;style&gt;
+            - - - - Схлопнуто для краткости - - - -
+        &lt;/style&gt;
+        &lt;title&gt;Serov&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="header"&gt;
+            &lt;strong&gt;Serov&lt;/strong&gt;
+            &lt;a href="about.html"&gt;About me&lt;/a&gt;
+            &lt;a href="cv.html"&gt;CV&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;center&gt;
+            &lt;h1&gt;PSKOV_ITEM_TITLE&lt;/h1&gt;
+            &lt;div class="contents"&gt;
+PSKOV_ITEM_CONTENTS
+            &lt;/div&gt;
+            &lt;div id="footer"&gt;
+                This sample web site has been generated by &lt;a href="http://opengamestudio.org/pskov"&gt;PSKOV&lt;/a&gt;.
+            &lt;/div&gt;
+        &lt;/center&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Внимание</strong>: стиль схлопнут для краткости.</p>
+<p>Как видите, <code>item.template</code> представляет из себя обычный файл HTML с двумя константами <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_TITLE</code></td>
+<td>Значение ключа <code>Title</code> из файла Markdown страницы</td>
+</tr>
+<tr>
+<td><code>PSKOV_ITEM_CONTENTS</code></td>
+<td>Предоставляет содержимое HTML, сгенерированное из Markdown</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Замечания</strong>:</p>
+<ul>
+<li>другие константы <strong>ПСКОВА</strong> описаны позже</li>
+<li>файл Markdown страницы описан ниже</li>
+</ul>
+<p><a name="md"/></p>
+<h2 id="04aboutmdcvmd">04. Изучите файлы <code>about.md</code> и <code>cv.md</code></h2>
+<p>Файл <code>about.md</code> содержит следующее:</p>
+<pre><code> Title: About me
+ Slug: about
+
+ Hi, my name is Valentin Serov. Here's my self-portrait:
+
+ ![Valentin Serov self-portrait][serov-portrait]
+
+ - - - - Схлопнуто для краткости - - - -
+
+ Have a look at my [CV][cv] now.
+
+ [serov]: https://en.wikipedia.org/wiki/Valentin_Serov
+ [revolution]: https://en.wikipedia.org/wiki/Russian_Revolution
+ [serov-portrait]: myself.jpg
+ [serov-work]: mywork.jpg
+ [girl-with-peaches]: https://en.wikipedia.org/wiki/Girl_with_Peaches
+ [pskov]: http://opengamestudio.org/pskov
+ [cv]: cv.html
+</code></pre>
+<p><code>about.md</code> начинается с так называемого заголовка:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ заголовка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Title</code></td>
+<td>Предоставляет значение для константы <code>PSKOV_ITEM_TITLE</code> во время генерации HTML из Markdown</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>Сообщает <strong>ПСКОВУ</strong> о том, что этот файл должен быть сохранён как <code>&lt;slug&gt;.html</code></td>
+</tr>
+</tbody>
+</table>
+<p>В остальном содержимое <code>about.md</code> ничем не отличается от любых других файлов Markdown.</p>
+<p><strong>Внимание</strong>: ссылка на страницу <code>cv</code> указана как <code>cv.html</code>, не <code>cv.md</code></p>
+<p>Файл <code>cv.md</code> содержит следующее:</p>
+<pre><code> Title: Curriculum vitae
+ Slug: cv
+
+ Here's my CV in case my paintings still interest you. I took a bit of a modern IT approach to structure my CV as key-value pairs of a dictionary (map), enjoy!
+
+ | Key | Value |
+ |---|---|
+ | Name | Valentin Serov |
+ | Age | 46 |
+ | Marital status | Married |
+ | Country | Russian Empire |
+ | Alma mater | Imperial Academy of Arts |
+ | Education | * Member Academy of Arts (1898) &lt;br&gt; * Full Member Academy of Arts (1903) |
+</code></pre>
+<p>Как видите, в <code>cv.md</code> нет ничего нового за исключением таблицы Markdown.</p>
+<p><a name="lfsa"/></p>
+<h2 id="05">05. Запустите ЛФСД</h2>
+<p>Запустите <a href="http://opengamestudio.org/lfsa/ru">ЛФСД</a> с указанием директории, содержащей только что рассмотренные файлы:</p>
+<pre><code>$ /путь/до/lfsa_1.0.0.py /путь/до/директории/01.TwoPages
+</code></pre>
+<p>Вы должны увидеть примерно такой вывод:</p>
+<pre><code>DIR: '/Users/kornerr/p/site-pskov-sample/01.TwoPages'
+PORT: '8000'
+</code></pre>
+<p><a name="gen"/></p>
+<h2 id="06">06. Сгенерируйте сайт</h2>
+<p>Настало время сгенерировать свой собственный веб-сайт:</p>
+<ul>
+<li>Перейдите на страницу <a href="http://opengamestudio.org/pskov/ru/pskov_1.0.0+ru.html">Инструмент</a></li>
+<li>Убедитесь в том, что:<ul>
+<li><code>Путь</code> указывает на нужную директорию</li>
+<li><code>Входящая директория</code> и <code>Шаблон элемента</code> содержат значения из <code>pskov.cfg</code></li></ul></li>
+<li>Нажмите кнопку <code>Генерировать</code> для генерации файлов HTML рядом с файлами Markdown</li>
+<li>Откройте сгенерированный файл <code>about.html</code> из директории сайта</li>
+<li>Перед вами ваш собственный веб-сайт, запущенный локально</li>
+</ul>
+<p><a name="summary"/></p>
+<h2 id="07">07. Итог</h2>
+<p>Вы успешно сгенерировали веб-сайт с двумя страницами. <a href="http://opengamestudio.org/pskov/sample/01.TwoPages/about.html">Проверьте результат</a>.</p>
+<p>Представлены константы <strong>ПСКОВА</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Константа ПСКОВА</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSKOV_ITEM_TITLE</code></td>
+<td>Значение ключа <code>Title</code> из файла Markdown страницы</td>
+</tr>
+<tr>
+<td><code>PSKOV_ITEM_CONTENTS</code></td>
+<td>Предоставляет содержимое HTML, сгенерированное из Markdown</td>
+</tr>
+</tbody>
+</table>
+<p>Представлены ключи настроек:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td>Указывает на директорию с файлом, на который ссылается ключ <code>item</code></td>
+</tr>
+<tr>
+<td><code>item</code></td>
+<td>Указывает на файл с шаблоном HTML, который используется для генерации файлов HTML из Markdown</td>
+</tr>
+</tbody>
+</table>
+<p>Представлены ключи заголовка:</p>
+<table>
+<thead>
+<tr>
+<th>Ключ заголовка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Title</code></td>
+<td>Предоставляет значение для константы <code>PSKOV_ITEM_TITLE</code> во время генерации HTML из Markdown</td>
+</tr>
+<tr>
+<td><code>Slug</code></td>
+<td>Сообщает <strong>ПСКОВУ</strong> о том, что этот файл должен быть сохранён как <code>&lt;slug&gt;.html</code></td>
+</tr>
+</tbody>
+</table>
+<p></div><div class="contents"></p>
+<table>
+<thead>
+<tr>
+<th>&lt; Назад</th>
+<th>Начало</th>
+<th>Далее &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="education.02.deps.html">02. Зависимости</a></td>
+<td><a href="education.html">Обучение</a></td>
+<td><a href="education.04.lang.html">04. Язык</a></td>
+</tr>
+</tbody>
+</table>
+        </div></center>
+        <div id="footer">
+            Сайт сгенерирован <a href="http://opengamestudio.org/pskov">ПСКОВОМ</a>
+            из <a href="http://github.com/ogstudio/site-pskov">этого исходного кода</a>.
+            Сайт расположен на <a href="https://pages.github.com">GitHub Pages</a>.
+        </div>
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
+
