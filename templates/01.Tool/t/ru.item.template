@@ -6,6 +6,7 @@ AMLEO site-pskov.UI.Base/Style
             AMLEO site-pskov.UI.Style/Background
             AMLEO site-pskov.UI.Style/Table
             AMLEO site-pskov.UI.Style/Code
+            AMLEO site-pskov.UI.Style/Video
             AMLEO site-pskov.UI.Contents/Style
             AMLEO site-pskov.UI.Footer/Style
             AMLEO site-pskov.UI.Lang/Style

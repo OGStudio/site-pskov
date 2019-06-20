@@ -175,6 +175,12 @@ As you can see, there's nothing new in `cv.md` except for a Markdown table.
 
 ## 05. Launch LFSA
 
+<video controls>
+    <source src="../vid/education.03.site.launch-lfsa.w2k.mp4" type ="video/mp4">
+    <source src="../vid/education.03.site.launch-lfsa.w2k.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
 ```

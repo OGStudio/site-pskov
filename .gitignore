@@ -2,3 +2,6 @@
 .DS_Store
 # Ignore VIM temporary files.
 *.swp
+# Ignore videos.
+*.mp4
+*.webm
