@@ -22,7 +22,8 @@ Lang: ru
 * [04. Изучите файлы `about.md` и `cv.md`](#md)
 * [05. Запустите ЛФСД](#lfsa)
 * [06. Сгенерируйте сайт](#gen)
-* [07. Итог](#summary)
+* [07. Проверьте сайт](#observe)
+* [08. Итог](#summary)
 
 <a name="inspiration"/>
 
@@ -175,6 +176,12 @@ PSKOV_ITEM_CONTENTS
 
 ## 05. Запустите ЛФСД
 
+<video controls poster="../vid/education.03.site.launch-lfsa.w2k.poster.png">
+    <source src="../vid/education.03.site.launch-lfsa.w2k.mp4" type ="video/mp4">
+    <source src="../vid/education.03.site.launch-lfsa.w2k.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
+
 Запустите [ЛФСД][lfsa] с указанием директории, содержащей только что рассмотренные файлы:
 
 ```
@@ -192,19 +199,29 @@ PORT: '8000'
 
 ## 06. Сгенерируйте сайт
 
-Настало время сгенерировать свой собственный веб-сайт:
+<video controls poster="../vid/education.03.site.gen.w2k.poster+ru.png">
+    <source src="../vid/education.03.site.gen.w2k+ru.mp4" type ="video/mp4">
+    <source src="../vid/education.03.site.gen.w2k+ru.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
 
-* Перейдите на страницу [Инструмент][tool]
-* Убедитесь в том, что:
-    * `Путь` указывает на нужную директорию
-    * `Входящая директория` и `Шаблон элемента` содержат значения из `pskov.cfg`
-* Нажмите кнопку `Генерировать` для генерации файлов HTML рядом с файлами Markdown
-* Откройте сгенерированный файл `about.html` из директории сайта
-* Перед вами ваш собственный веб-сайт, запущенный локально
+Перейдите на страницу [Инструмент][tool] и нажмите кнопку `Генерировать` для генерации файлов HTML рядом с файлами Markdown.
+
+<a name="observe"/>
+
+## 07. Проверьте сайт
+
+<video controls poster="../vid/education.03.site.observe.w2k.poster.png">
+    <source src="../vid/education.03.site.observe.w2k.mp4" type ="video/mp4">
+    <source src="../vid/education.03.site.observe.w2k.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
+
+Проверьте сгенерированный веб-сайт локально: откройте файл `about.html` и совершите переход между страницами.
 
 <a name="summary"/>
 
-## 07. Итог
+## 08. Итог
 
 Вы успешно сгенерировали веб-сайт с двумя страницами. [Проверьте результат][01-sample].
 

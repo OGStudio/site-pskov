@@ -22,7 +22,8 @@ Estimated completion time: 10 minutes.
 * [04. Investigate `about.md` and `cv.md` files](#md)
 * [05. Launch LFSA](#lfsa)
 * [06. Generate the site](#gen)
-* [07. Summary](#summary)
+* [07. Observe the site](#observe)
+* [08. Summary](#summary)
 
 <a name="inspiration"/>
 
@@ -175,7 +176,7 @@ As you can see, there's nothing new in `cv.md` except for a Markdown table.
 
 ## 05. Launch LFSA
 
-<video controls>
+<video controls poster="../vid/education.03.site.launch-lfsa.w2k.poster.png">
     <source src="../vid/education.03.site.launch-lfsa.w2k.mp4" type ="video/mp4">
     <source src="../vid/education.03.site.launch-lfsa.w2k.webm" type ="video/webm">
     ERROR Your browser does not support HTML5 video
@@ -198,19 +199,29 @@ PORT: '8000'
 
 ## 06. Generate the site
 
-Now it's finally time to generate your personal web site:
+<video controls poster="../vid/education.03.site.gen.w2k.poster.png">
+    <source src="../vid/education.03.site.gen.w2k.mp4" type ="video/mp4">
+    <source src="../vid/education.03.site.gen.w2k.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
 
-* Go to [Tool][tool] page
-* Make sure
-    * `Path` points to the same directory you specified before
-    * `Input directory` and `Item template` have values from `pskov.cfg`
-* Press `Generate` button to generate HTML files right where Markdown ones reside
-* Open generated `about.html` from the site's directory
-* You should see your web site running locally
+Go to [Tool][tool] page and press `Generate` button to generate HTML files right where Markdown ones reside.
+
+<a name="observe"/>
+
+## 07. Observe the site
+
+<video controls poster="../vid/education.03.site.observe.w2k.poster.png">
+    <source src="../vid/education.03.site.observe.w2k.mp4" type ="video/mp4">
+    <source src="../vid/education.03.site.observe.w2k.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+
+Observe generated web site locally by opening `about.html` and switching between pages.
 
 <a name="summary"/>
 
-## 07. Summary
+## 08. Summary
 
 You have successfully generated a web site with two pages. [Check out the result][01-sample].
 
