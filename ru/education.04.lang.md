@@ -1,5 +1,5 @@
 Title: Обучение: 04. Язык
-Date: 2019-06-18 00:00
+Date: 2019-06-25 00:00
 Category: Page
 Slug: education.04.lang
 Lang: ru
@@ -20,8 +20,10 @@ Lang: ru
 * [02. Изучите файл `pskov.cfg`](#cfg)
 * [03. Изучите файлы шаблонов](#item)
 * [04. Изучите файлы Markdown](#md)
-* [05. Запустите ЛФСД и сгенерируйте сайт](#gen)
-* [06. Итог](#summary)
+* [05. Запустите ЛФСД](#lfsa)
+* [06. Сгенерируйте сайт](#gen)
+* [07. Проверьте сайт](#observe)
+* [08. Итог](#summary)
 
 <a name="localization"/>
 
@@ -142,9 +144,15 @@ item = item.template
 
 **Внимание**: русская страница использует точно такое же значение `Slug`, как и английская страница.
 
-<a name="gen"/>
+<a name="lfsa"/>
 
-## 05. Запустите ЛФСД и сгенерируйте сайт
+## 05. Запустите ЛФСД
+
+<video controls poster="../vid/education.04.lang.launch-lfsa.edgy.poster.png">
+    <source src="../vid/education.04.lang.launch-lfsa.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.launch-lfsa.edgy.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
 
 Запустите [ЛФСД][lfsa] с указанием директории, содержащей только что рассмотренные файлы:
 
@@ -152,16 +160,33 @@ item = item.template
 $ /путь/до/lfsa_1.0.0.py /путь/до/директории/02.Language
 ```
 
-Сгенерируйте сайт:
+<a name="gen"/>
 
-* Перейдите на страницу [Инструмент][tool]
-* Нажмите кнопку `Генерировать`
-* Откройте сгенерированный файл `en/about.html` или `ru/about.html` из директории сайта
-* Переключите язык, чтобы убедиться в корректной работе
+## 06. Сгенерируйте сайт
+
+<video controls poster="../vid/education.04.lang.gen.edgy.poster+ru.png">
+    <source src="../vid/education.04.lang.gen.edgy+ru.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.gen.edgy+ru.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
+
+Перейдите на страницу [Инструмент][tool] и нажмите кнопку `Генерировать` для генерации файлов HTML рядом с файлами Markdown.
+
+<a name="observe"/>
+
+## 07. Проверьте сайт
+
+<video controls poster="../vid/education.04.lang.observe.edgy.poster+ru.png">
+    <source src="../vid/education.04.lang.observe.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.observe.edgy.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
+
+Проверьте сгенерированный веб-сайт локально: откройте файл `ru/about.html` или `en/about.html` и переключите язык.
 
 <a name="summary"/>
 
-## 06. Итог
+## 08. Итог
 
 Вы успешно добавили выбор языка. [Проверьте результат][02-sample].
 

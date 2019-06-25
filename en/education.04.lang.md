@@ -1,5 +1,5 @@
 Title: Education: 04. Language
-Date: 2019-06-18 00:00
+Date: 2019-06-25 00:00
 Category: Page
 Slug: education.04.lang
 Lang: en
@@ -20,8 +20,10 @@ Estimated completion time: 10 minutes.
 * [02. Investigate `pskov.cfg` file](#cfg)
 * [03. Investigate template files](#item)
 * [04. Investigate Markdown files](#md)
-* [05. Launch LFSA and generate the site](#gen)
-* [06. Summary](#summary)
+* [05. Launch LFSA](#lfsa)
+* [06. Generate the site](#gen)
+* [07. Observe the site](#observe)
+* [08. Summary](#summary)
 
 <a name="localization"/>
 
@@ -142,9 +144,15 @@ For example, `ru/cv.md` has the following contents:
 
 **Note**: Russian page has exactly the same `Slug` value as English one.
 
-<a name="gen"/>
+<a name="lfsa"/>
 
-## 05. Launch LFSA and generate the site
+## 05. Launch LFSA
+
+<video controls poster="../vid/education.04.lang.launch-lfsa.edgy.poster.png">
+    <source src="../vid/education.04.lang.launch-lfsa.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.launch-lfsa.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
 
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
@@ -152,16 +160,33 @@ Launch [LFSA][lfsa] so that it points to directory with the files we just observ
 $ /path/to/lfsa_1.0.0.py /path/to/dir/02.Language
 ```
 
-Generate the site:
+<a name="gen"/>
 
-* Go to [Tool][tool] page
-* Press `Generate` button
-* Open generated `en/about.html` or `ru/about.html` from the site's directory locally
-* Switch language to verify language selection works fine
+## 06. Generate the site
+
+<video controls poster="../vid/education.04.lang.gen.edgy.poster.png">
+    <source src="../vid/education.04.lang.gen.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.gen.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+
+Go to [Tool][tool] page and press `Generate` button to generate HTML files right where Markdown ones reside.
+
+<a name="observe"/>
+
+## 07. Observe the site
+
+<video controls poster="../vid/education.04.lang.observe.edgy.poster.png">
+    <source src="../vid/education.04.lang.observe.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.observe.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+
+Observe generated web site locally by opening `en/about.html` or `ru/about.html` and switching language.
 
 <a name="summary"/>
 
-## 06. Summary
+## 08. Summary
 
 You have successfully added language selection. [Check out the result][02-sample].
 

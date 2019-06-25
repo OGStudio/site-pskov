@@ -1,5 +1,5 @@
 Title: Обучение: 05. Блог
-Date: 2019-06-19 00:00
+Date: 2019-06-25 00:00
 Category: Page
 Slug: education.05.blog
 Lang: ru
@@ -23,8 +23,10 @@ Lang: ru
 * [05. Изучите шаблоны страниц с предпросмотрами](#index)
 * [06. Изучите постраничные шаблоны](#pagination)
 * [07. Изучите файлы Markdown](#md)
-* [08. Запустите ЛФСД и сгенерируйте сайт](#gen)
-* [09. Итог](#summary)
+* [08. Запустите ЛФСД](#lfsa)
+* [09. Сгенерируйте сайт](#gen)
+* [10. Проверьте сайт](#observe)
+* [11. Итог](#summary)
 
 <a name="blog"/>
 
@@ -400,9 +402,15 @@ PSKOV_ITEM_CONTENTS
 |---|---|
 | `Date` | Предоставляет значение для константы `PSKOV_ITEM_DATE` при генерации HTML из Markdown |
 
-<a name="gen"/>
+<a name="lfsa"/>
 
-## 08. Запустите ЛФСД и сгенерируйте сайт
+## 08. Запустите ЛФСД
+
+<video controls poster="../vid/education.05.blog.launch-lfsa.edgy.poster.png">
+    <source src="../vid/education.05.blog.launch-lfsa.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.05.blog.launch-lfsa.edgy.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
 
 Запустите [ЛФСД][lfsa] с указанием директории, содержащей только что рассмотренные файлы:
 
@@ -410,16 +418,33 @@ PSKOV_ITEM_CONTENTS
 $ /путь/до/lfsa_1.0.0.py /путь/до/директории/03.Blog
 ```
 
-Сгенерируйте сайт:
+<a name="gen"/>
 
-* Перейдите на страницу [Инструмент][tool]
-* Нажмите кнопку `Генерировать`
-* Откройте сгенерированный файл `en/blog/index.html` или `ru/blog/index.html` из директории сайта
-* Осуществите переход между страницами предпросмотра
+## 09. Сгенерируйте сайт
+
+<video controls poster="../vid/education.05.blog.gen.edgy.poster+ru.png">
+    <source src="../vid/education.05.blog.gen.edgy+ru.mp4" type ="video/mp4">
+    <source src="../vid/education.05.blog.gen.edgy+ru.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
+
+Перейдите на страницу [Инструмент][tool] и нажмите кнопку `Генерировать` для генерации файлов HTML рядом с файлами Markdown.
+
+<a name="observe"/>
+
+## 10. Проверьте сайт
+
+<video controls poster="../vid/education.05.blog.observe.edgy.poster+ru.png">
+    <source src="../vid/education.05.blog.observe.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.05.blog.observe.edgy.webm" type ="video/webm">
+    ОШИБКА Ваш браузер не поддерживает видео HTML5
+</video>
+
+Проверьте сгенерированный веб-сайт локально: откройте файл `ru/blog/index.html` или `en/blog/index.html` и осуществите переход между страницами предпросмотра.
 
 <a name="summary"/>
 
-## 09. Итог
+## 11. Итог
 
 Вы успешно сгенерировали веб-сайт с "динамическими" страницами блога. [Проверьте результат][03-sample].
 

@@ -1,5 +1,5 @@
 Title: Обучение: 02. Зависимости
-Date: 2019-06-18 00:00
+Date: 2019-06-25 00:00
 Category: Page
 Slug: education.02.deps
 Lang: ru

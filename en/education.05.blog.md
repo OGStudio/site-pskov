@@ -1,5 +1,5 @@
 Title: Education: 05. Blog
-Date: 2019-05-22 00:00
+Date: 2019-06-25 00:00
 Category: Page
 Slug: education.05.blog
 Lang: en
@@ -23,8 +23,12 @@ Estimated completion time: 20 minutes.
 * [05. Investigate templates of preview pages](#index)
 * [06. Investigate pagination templates](#pagination)
 * [07. Investigate Markdown files](#md)
-* [08. Launch LFSA and generate the site](#gen)
-* [09. Summary](#summary)
+* [08. Launch LFSA](#lfsa)
+* [09. Generate the site](#gen)
+* [10. Observe the site](#observe)
+* [11. Summary](#summary)
+
+
 
 <a name="blog"/>
 
@@ -400,9 +404,15 @@ Date is used to sort blog posts by date in descending order:
 |---|---|
 | `Date` | Provides value for `PSKOV_ITEM_DATE` constant when generating HTML out of Markdown |
 
-<a name="gen"/>
+<a name="lfsa"/>
 
-## 08. Launch LFSA and generate the site
+## 08. Launch LFSA
+
+<video controls poster="../vid/education.05.blog.launch-lfsa.edgy.poster.png">
+    <source src="../vid/education.05.blog.launch-lfsa.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.05.blog.launch-lfsa.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
 
 Launch [LFSA][lfsa] so that it points to directory with the files we just observed:
 
@@ -410,16 +420,33 @@ Launch [LFSA][lfsa] so that it points to directory with the files we just observ
 $ /path/to/lfsa_1.0.0.py /path/to/dir/03.Blog
 ```
 
-Generate the site:
+<a name="gen"/>
 
-* Go to [Tool][tool] page
-* Press `Generate` button
-* Open generated `en/blog/index.html` or `ru/blog/index.html` from the site's directory locally
-* Navigate preview pages to make sure everything works fine
+## 09. Generate the site
+
+<video controls poster="../vid/education.05.blog.gen.edgy.poster.png">
+    <source src="../vid/education.05.blog.gen.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.05.blog.gen.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+
+Go to [Tool][tool] page and press `Generate` button to generate HTML files right where Markdown ones reside.
+
+<a name="observe"/>
+
+## 10. Observe the site
+
+<video controls poster="../vid/education.05.blog.observe.edgy.poster.png">
+    <source src="../vid/education.05.blog.observe.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.05.blog.observe.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+
+Observe generated web site locally by opening `en/blog/index.html` or `ru/blog/index.html` and navigating preview pages.
 
 <a name="summary"/>
 
-## 09. Summary
+## 11. Summary
 
 You have successfully generated a web site with "dynamic" blog posts. [Check out the result][03-sample].
 

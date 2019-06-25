@@ -120,8 +120,10 @@ Education: 04. Language
 <li><a href="#cfg">02. Investigate <code>pskov.cfg</code> file</a></li>
 <li><a href="#item">03. Investigate template files</a></li>
 <li><a href="#md">04. Investigate Markdown files</a></li>
-<li><a href="#gen">05. Launch LFSA and generate the site</a></li>
-<li><a href="#summary">06. Summary</a></li>
+<li><a href="#lfsa">05. Launch LFSA</a></li>
+<li><a href="#gen">06. Generate the site</a></li>
+<li><a href="#observe">07. Observe the site</a></li>
+<li><a href="#summary">08. Summary</a></li>
 </ul>
 <p><a name="localization"/></p>
 <h2 id="01localization">01. Localization</h2>
@@ -225,20 +227,34 @@ item = item.template
  | Звания | * академик ИАХ (1898) &lt;br&gt; * действительный член ИАХ (1903) |
 </code></pre>
 <p><strong>Note</strong>: Russian page has exactly the same <code>Slug</code> value as English one.</p>
-<p><a name="gen"/></p>
-<h2 id="05launchlfsaandgeneratethesite">05. Launch LFSA and generate the site</h2>
+<p><a name="lfsa"/></p>
+<h2 id="05launchlfsa">05. Launch LFSA</h2>
+<video controls poster="../vid/education.04.lang.launch-lfsa.edgy.poster.png">
+    <source src="../vid/education.04.lang.launch-lfsa.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.launch-lfsa.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
 <p>Launch <a href="http://opengamestudio.org/lfsa">LFSA</a> so that it points to directory with the files we just observed:</p>
 <pre><code>$ /path/to/lfsa_1.0.0.py /path/to/dir/02.Language
 </code></pre>
-<p>Generate the site:</p>
-<ul>
-<li>Go to <a href="http://opengamestudio.org/pskov">Tool</a> page</li>
-<li>Press <code>Generate</code> button</li>
-<li>Open generated <code>en/about.html</code> or <code>ru/about.html</code> from the site's directory locally</li>
-<li>Switch language to verify language selection works fine</li>
-</ul>
+<p><a name="gen"/></p>
+<h2 id="06generatethesite">06. Generate the site</h2>
+<video controls poster="../vid/education.04.lang.gen.edgy.poster.png">
+    <source src="../vid/education.04.lang.gen.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.gen.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+<p>Go to <a href="http://opengamestudio.org/pskov">Tool</a> page and press <code>Generate</code> button to generate HTML files right where Markdown ones reside.</p>
+<p><a name="observe"/></p>
+<h2 id="07observethesite">07. Observe the site</h2>
+<video controls poster="../vid/education.04.lang.observe.edgy.poster.png">
+    <source src="../vid/education.04.lang.observe.edgy.mp4" type ="video/mp4">
+    <source src="../vid/education.04.lang.observe.edgy.webm" type ="video/webm">
+    ERROR Your browser does not support HTML5 video
+</video>
+<p>Observe generated web site locally by opening <code>en/about.html</code> or <code>ru/about.html</code> and switching language.</p>
 <p><a name="summary"/></p>
-<h2 id="06summary">06. Summary</h2>
+<h2 id="08summary">08. Summary</h2>
 <p>You have successfully added language selection. <a href="http://opengamestudio.org/pskov/sample/02.Language/en/about.html">Check out the result</a>.</p>
 <p>Introduced PSKOV constants include:</p>
 <table>
